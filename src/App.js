@@ -1,9 +1,8 @@
-import Navbar from './shared/Navbar';
-
+import Navbar from '../src/shared/Navbar'
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      <Navbar/>
     </div>
   );
 }
