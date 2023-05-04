@@ -1,24 +1,15 @@
 import React from 'react';
-import './navbar.css';
 import Logo from '../assets/pictures/—Pngtree—vector popcorn icon_4002575.png'
 
 const Navbar = () => {
     return (
         <div>
-            <nav className="navbar navbar-expand-lg bg-dark sticky-top navbar-dark p-3 shadow-sm">
+            <nav style={{zIndex: '+991'}} className="navbar navbar-dark navbar-expand-lg bg-dark sticky-top p-3 shadow-sm">
                 <div className="container-fluid">
                     <a className="navbar-brand" href="#"><img src={Logo} style={{width: '50px', height: '50px'}} className="fa-solid mb-2 fa-shop me-2" /> <strong>Web movie</strong></a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                     </button>
-                
-                    {/* <div className="mx-auto my-3 d-lg-none d-sm-block d-xs-block">
-                        <div className="input-group">
-                            <span className="border-primary input-group-text bg-primary text-white"><i className="fa-solid fa-magnifying-glass"></i></span>
-                            <input type="text" className="form-control border-primary" style={{color: '#7a7a7a'}} />
-                            <button className="btn btn-primary text-white">Search</button>
-                        </div>
-                    </div> */}
                     <div className=" collapse navbar-collapse" id="navbarNavDropdown">
                         <div className="ms-auto d-none d-lg-block">
                             <div className="input-group">
