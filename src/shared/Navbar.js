@@ -4,7 +4,7 @@ import Logo from '../assets/pictures/—Pngtree—vector popcorn icon_4002575.pn
 const Navbar = () => {
     return (
         <div>
-            <nav className="navbar navbar-dark navbar-expand-lg bg-dark sticky-top p-3 text-white shadow-sm">
+            <nav className="navbar navbar-dark navbar-expand-lg bg-dark sticky-top p-1 text-white shadow-sm">
                 <div className="container-fluid">
                     <a className="navbar-brand" href="#"><img src={Logo} style={{width: '50px', height: '50px'}} className="fa-solid mb-2 fa-shop me-2" /> <strong>Web movie</strong></a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
