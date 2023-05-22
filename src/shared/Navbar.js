@@ -1,12 +1,12 @@
 import React from 'react';
 import Logo from '../assets/pictures/—Pngtree—vector popcorn icon_4002575.png'
-
+import { Link } from 'react-router-dom';
 const Navbar = () => {
     return (
         <div>
             <nav className="navbar navbar-dark navbar-expand-lg bg-dark sticky-top p-1 text-white shadow-sm">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#"><img src={Logo} style={{width: '50px', height: '50px'}} className="fa-solid mb-2 fa-shop me-2" /> <strong>Web movie</strong></a>
+                    <Link className="navbar-brand" to="home"><img src={Logo} style={{width: '50px', height: '50px'}} className="fa-solid mb-2 fa-shop me-2" /> <strong>Web movie</strong></Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                     </button>
@@ -27,74 +27,80 @@ const Navbar = () => {
                             </div>
                         </div>
                         <li className="nav-item">
-                            <a className="nav-link mx-2 text-uppercase active" aria-current="page" href="#">Home</a>
+                            <Link className="nav-link mx-2 text-uppercase active" aria-current="page" to="/home">Home</Link>
                         </li>
                         <li className="nav-item dropdown">
-                            <a data-bs-toggle='dropdown' className="nav-link mx-2 dropdown-toggle text-uppercase" href="#" aria-expanded="false">Shows</a>
+                            <Link data-bs-toggle='dropdown' className="nav-link mx-2 dropdown-toggle text-uppercase" to="#" aria-expanded="false">Shows</Link>
                             <ul className='dropdown-menu'>
                                 <li>
-                                    <a className='dropdown-item' href='action'>action</a>
+                                    <Link className='dropdown-item' to='shows/28'>action</Link>
                                 </li>
                                 <li>
-                                    <a className='dropdown-item' href='Adventure'>Adventure</a>
+                                    <Link className='dropdown-item' to='shows/12'>Adventure</Link>
                                 </li>
                                 <li>
-                                    <a className='dropdown-item' href='Animation'>Animation</a>
+                                    <Link className='dropdown-item' to='shows/16'>Animation</Link>
                                 </li>
                                 <li>
-                                    <a className='dropdown-item' href='Comdey'>Comdey</a>
+                                    <Link className='dropdown-item' to='shows/35'>Comdey</Link>
                                 </li>
                                 <li>
-                                    <a className='dropdown-item' href='Crime'>Crime</a>
+                                    <Link className='dropdown-item' to='shows/80'>Crime</Link>
                                 </li>
                                 <li>
-                                    <a className='dropdown-item' href='Documentary'>Documentary</a>
+                                    <Link className='dropdown-item' to='shows/99'>Documentary</Link>
                                 </li>
                                 <li>
-                                    <a className='dropdown-item' href='Drama'>Drama</a>
+                                    <Link className='dropdown-item' to='shows/18'>Drama</Link>
                                 </li>
                                 <li>
-                                    <a className='dropdown-item' href='Family'>Family</a>
+                                    <Link className='dropdown-item' to='shows/10751'>Family</Link>
                                 </li>
                                 <li>
-                                    <a className='dropdown-item' href='Fantasy'>Fantasy</a>
+                                    <Link className='dropdown-item' to='shows/14'>Fantasy</Link>
                                 </li>
                                 <li>
-                                    <a className='dropdown-item' href='History'>History</a>
+                                    <Link className='dropdown-item' to='shows/36'>History</Link>
                                 </li>
                                 <li>
-                                    <a className='dropdown-item' href='Horror'>Horror</a>
+                                    <Link className='dropdown-item' to='shows/27'>Horror</Link>
                                 </li>
                                 <li>
-                                    <a className='dropdown-item' href='Romance'>Romance</a>
+                                    <Link className='dropdown-item' to='shows/10402'>Music</Link>
                                 </li>
                                 <li>
-                                    <a className='dropdown-item' href='Science-Fiction'>Science-Fiction</a>
+                                    <Link className='dropdown-item' to='shows/9648'>Mystery</Link>
                                 </li>
                                 <li>
-                                    <a className='dropdown-item' href='TV-Movie'>TV Movie</a>
+                                    <Link className='dropdown-item' to='shows/10749'>Romance</Link>
                                 </li>
                                 <li>
-                                    <a className='dropdown-item' href='Thrailler'>Thrailler</a>
+                                    <Link className='dropdown-item' to='shows/878'>Science-Fiction</Link>
                                 </li>
                                 <li>
-                                    <a className='dropdown-item' href='War'>War</a>
+                                    <Link className='dropdown-item' to='shows/10770'>TV Movie</Link>
                                 </li>
                                 <li>
-                                    <a className='dropdown-item' href='Western'>Western</a>
+                                    <Link className='dropdown-item' to='shows/53'>Thrailler</Link>
+                                </li>
+                                <li>
+                                    <Link className='dropdown-item' to='shows/10752'>War</Link>
+                                </li>
+                                <li>
+                                    <Link className='dropdown-item' to='shows/37'>Western</Link>
                                 </li>
                             </ul>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link mx-2 text-uppercase" href="#">Movies</a>
+                            <Link className="nav-link mx-2 text-uppercase" to="#">Movies</Link>
                         </li>
                     </ul>
                     <ul className="navbar-nav ms-auto ">
                         <li className="nav-item">
-                            <a className="nav-link mx-2 text-dark text-uppercase btn btn-light" href="#"><i className="fa-solid fa-cart-shopping me-1"></i> Login</a>
+                            <Link className="nav-link mx-2 text-dark text-uppercase btn btn-light" to="#"><i className="fa-solid fa-cart-shopping me-1"></i> Login</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link mx-2 text-light text-uppercase btn btn-primary mt-2 mt-lg-0" href="#"><i className="fa-solid fa-circle-user me-1"></i> Account</a>
+                            <Link className="nav-link mx-2 text-light text-uppercase btn btn-primary mt-2 mt-lg-0" to="#"><i className="fa-solid fa-circle-user me-1"></i> Account</Link>
                         </li>
                     </ul>
                     </div>

@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { all } from 'axios'
 //Components
 import Cart from '../shared/Cart';
 
@@ -20,6 +20,7 @@ const getShows = async () => {
     return shows
 }
 
+
 const getTrends = async () => {
     const response = await axios.get(TRENDS_URL)
     const trends = response.data.results
@@ -27,7 +28,7 @@ const getTrends = async () => {
 }
 const titleShorter = (title) => {
     const splitedTitle = title.split(' ')
-    const newTitle = `${splitedTitle[0]}${splitedTitle[1]}`;
+    const newTitle = `${splitedTitle[0]} ${splitedTitle[1]}`;
     return newTitle
 }
 
