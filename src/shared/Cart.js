@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 //Components
 import { titleShorter } from '../services/api';
 //Icons
-import { AiOutlineRight } from "react-icons/ai";
-
-const Cart = ({itemData}) => {
+const Cart = ({itemData, movieOrTv}) => {
     const {title, id, poster_path, vote_average, release_date, name, first_air_date} = itemData
     const IMAGE_URL = 'https://image.tmdb.org/t/p/w500'
     return (
@@ -17,7 +15,7 @@ const Cart = ({itemData}) => {
                     <h6 className='card-title py-1 mt-2 col-12  rounded-4' style={{backgroundColor: '#ffffff78'}}>Rateing: {vote_average.toFixed(2)}</h6>
                     <div className='d-flex ps-1 pe-0 justify-content-between align-items-center'>
                         <h6 className='card-title'>{release_date || first_air_date}</h6>
-                        <Link to={`movie/${id}`} className='text-center btn btn-warning text-white rounded-5 p-1'>Details
+                        <Link to={`${movieOrTv}/details/${id}`} className='text-center btn btn-warning text-white rounded-5 p-1'>Details
                         </Link>
                     </div>
                 </div>
