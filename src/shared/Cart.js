@@ -15,7 +15,7 @@ const Cart = ({itemData, movieOrTv}) => {
                     <h6 className='card-title py-1 mt-2 col-12  rounded-4' style={{backgroundColor: '#ffffff78'}}>Rateing: {vote_average.toFixed(2)}</h6>
                     <div className='d-flex ps-1 pe-0 justify-content-between align-items-center'>
                         <h6 className='card-title'>{release_date || first_air_date}</h6>
-                        <Link to={`${movieOrTv}/details/${id}`} className='text-center btn btn-warning text-white rounded-5 p-1'>Details
+                        <Link to={`/${movieOrTv}/details/${id}`} className='text-center btn btn-warning text-white rounded-5 p-1'>Details
                         </Link>
                     </div>
                 </div>

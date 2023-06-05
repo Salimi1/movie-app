@@ -5,6 +5,7 @@ import Navbar from '../src/shared/Navbar'
 import Home from './components/Home'
 import MovieDetails from './components/MovieDetails';
 import Shows from './components/Shows';
+import Characters from './components/Characters';
 //Context
 import MovieContextProvider from './context/MovieContextProvider';
 import ShowContextProvider from './context/ShowContextProvider';
@@ -19,9 +20,11 @@ function App() {
             <TrendShowsContextProvider>
               <Navbar/>
               <Routes>
+                <Route path='*' element={<Navigate to='/home'/>} />
                 <Route path='/home' element={<Home/>}/>
                 <Route path='/shows/:genreId' element={<Shows/>}/>
-                <Route path='movie/details/:id' element={<MovieDetails/>}/>
+                <Route path='/:movieOrTv/details/:id' element={<MovieDetails/>}/>
+                <Route path='/:type/characters' element={<Characters />}/>
               </Routes>
               <Footer/>
             </TrendShowsContextProvider>
