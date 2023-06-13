@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios'
 import { ThreeDots } from  'react-loader-spinner'
+//shared
+import ActorCart from '../shared/ActorCart';
 //Icons
 import { AiFillStar } from "react-icons/ai";
 const MovieDetails = () => {
@@ -35,7 +37,7 @@ const MovieDetails = () => {
     const direktorList = created_by?.map(creator => creator.name).join(', ')
     const pictures = images?.map(item => item.file_path)
     const slicedImages = pictures?.slice(0, 2);
-    const slicedActors = credits?.slice(0, 6)
+    const slicedActors = credits?.slice(0, 4)
     
     return (
         <div className='container-fluid text-white'>
@@ -80,19 +82,13 @@ const MovieDetails = () => {
                 </div>
             </div>
 
-            <div className='my-5 mx-3 mx-md-0'>
+            <div className='my-5 px-3 mx-3 mx-md-0'>
                 <h3 className='text-white pt-5 mb-4'>Hauptdarsteller</h3>
-                <div className='row d-flex flex-md-nowrap justify-content-between'>
-                    {slicedActors.map(actor => <div key={actor.cast_id} className='col-3 col-md-2 ms-1 card mt-3 p-0 text-dark'>
-                        <img className='card-img-top h-75 w-100' src={`${IMAGE_URL}${actor.profile_path}`} />
-                        <div className='card-body px-0'>
-                            <h4 className='card-title fs-6'>{actor.original_name}</h4>
-                            <p className='card-text text-secondary'>{actor.character}</p>
-                        </div>
-                    </div>)}
+                <div className='row ms-sm-2 ms-md-0 d-flex flex-md-nowrap justify-content-md-evenly'>
+                    {slicedActors.map(actor => <ActorCart data={actor} key={actor.cast_id} />)}
                 </div>
-                <div className='text-center mt-4'>
-                    <Link className='btn fs-2 btn-danger' to={`/${name || title}/characters`}>Mehr anzeigen</Link>
+                <div className='text-center mt-5'>
+                    <Link className='btn fs-2 btn-danger' to={`/${movieOrTv}/${id}/characters`}>Mehr anzeigen</Link>
                 </div>
             </div>
         </div>

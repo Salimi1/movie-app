@@ -6,6 +6,7 @@ import Home from './components/Home'
 import MovieDetails from './components/MovieDetails';
 import Shows from './components/Shows';
 import Characters from './components/Characters';
+import ActorDetailsPage from './components/ActorDetailsPage';
 //Context
 import MovieContextProvider from './context/MovieContextProvider';
 import ShowContextProvider from './context/ShowContextProvider';
@@ -24,7 +25,8 @@ function App() {
                 <Route path='/home' element={<Home/>}/>
                 <Route path='/shows/:genreId' element={<Shows/>}/>
                 <Route path='/:movieOrTv/details/:id' element={<MovieDetails/>}/>
-                <Route path='/:type/characters' element={<Characters />}/>
+                <Route path='/:type/:id/characters' element={<Characters/>}/>
+                <Route path='/person/:id/details' element={<ActorDetailsPage/>}/>
               </Routes>
               <Footer/>
             </TrendShowsContextProvider>
