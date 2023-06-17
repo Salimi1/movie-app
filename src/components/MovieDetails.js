@@ -88,7 +88,7 @@ const MovieDetails = () => {
                     {slicedActors.map(actor => <ActorCart data={actor} key={actor.cast_id} />)}
                 </div>
                 <div className='text-center mt-5'>
-                    <Link className='btn fs-2 btn-danger' to={`/${movieOrTv}/${id}/characters`}>Mehr anzeigen</Link>
+                    <Link className='btn w-25 fs-2 btn-light' to={`/${movieOrTv}/${id}/characters`}>Mehr anzeigen</Link>
                 </div>
             </div>
         </div>

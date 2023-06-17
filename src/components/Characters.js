@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { act } from 'react-dom/test-utils';
+//Context
+import { MovieContext } from '../context/MovieContextProvider';
+import { ShowContext } from '../context/ShowContextProvider';
 //shared
 import ActorCart from '../shared/ActorCart';
 const Characters = () => {
+    const movies = useContext(MovieContext)
+    const shows = useContext(ShowContext)
     const {type, id}= useParams()
     const CREDIT_URL = `https://api.themoviedb.org/3/${type}/${id}/credits?language=en-US&api_key=211669938f46a27e2998bb698a8efade`;
     const [actors, setActors] = useState([])
