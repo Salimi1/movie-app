@@ -16,7 +16,7 @@ const Shows = () => {
     const fetchData = async () => {
       try {
         const allShows = [];
-        for (let i = 1; i < 20; i++) {
+        for (let i = 1; i < 15; i++) {
           const response = await axios.get(
             `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=${i}&sort_by=popularity.desc&with_genres=${genreId}&api_key=211669938f46a27e2998bb698a8efade`
           );
