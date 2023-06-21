@@ -28,6 +28,7 @@ const MovieDetails = () => {
     const detailsDivTag = useRef()
     const closeBtn = useRef()
     const showTrailerHsandler = () => {
+        iframeTag.current.src = YOUTUBE_URL
         iframeTag.current.style.display = ' block';
         detailsDivTag.current.style.filter = 'blur(5px)';
         closeBtn.current.style.display = ' block';
@@ -39,6 +40,9 @@ const MovieDetails = () => {
         iframeTag.current.style.display = ' none';
         detailsDivTag.current.style.filter = 'blur(0px)';
         closeBtn.current.style.display = ' none';
+        if (iframeTag.current) {
+            iframeTag.current.src = '';
+          }
     }
 
     useEffect(() => {
