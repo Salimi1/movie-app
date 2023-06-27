@@ -89,8 +89,8 @@ const MovieDetails = () => {
                             </div>
                         </div>
                         <div className=''>
-                            <span className='border-end border-secondary pe-2 me-2'>{release_date}</span>
-                            <span>{runtime} min</span>
+                            <span className='border-end border-secondary pe-2 me-2'>{release_date && release_date}</span>
+                            <span>{runtime && runtime} min</span>
                         </div>
                         <div id='trailerCon' className='my-3'>
                             <span className='text-warning fw-bold'>Overview</span>

@@ -58,4 +58,9 @@ const movieShowHandler = (Info, movieTv) => {
     )
 }
 
+const NavbarMaker = (value) => {
+    const newValue = value
+    
+}
+
 export {getFilms, getShows, titleShorter, movieShowHandler, getTrendFilms, getTrendShows}

@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useEffect, useRef, useState, createContext } from 'react';
 import Logo from '../assets/pictures/—Pngtree—vector popcorn icon_4002575.png'
-import { Link } from 'react-router-dom';
-const Navbar = () => {
+import { Link } from 'react-router-dom'
+
+export const searchBoxValueContext = createContext()
+const Navbar = ({onChange}) => {
+    const [inputValue, setInputValue] = useState('');
+
+    const handleInputChange = (event) => {
+      const newValue = event.target.value;
+      setInputValue(newValue);
+      onChange(newValue)
+    }
     return (
         <div>
             <nav className="navbar navbar-dark navbar-expand-lg bg-dark sticky-top p-1 text-white shadow-sm">
@@ -14,7 +23,7 @@ const Navbar = () => {
                         <div className="ms-auto d-none d-lg-block">
                             <div className="input-group">
                             <span className="border-primary input-group-text bg-primary text-white"><i className="fa-solid fa-magnifying-glass"></i></span>
-                            <input placeholder='What do you search?' type="text" className="form-control border-primary" style={{color: '#7a7a7a'}} />
+                            <input value={inputValue} onChange={handleInputChange} placeholder='What do you search?' type="text" className="form-control border-primary" style={{color: '#7a7a7a'}} />
                             <button className="btn btn-primary text-white">Search</button>
                         </div>
                     </div>
