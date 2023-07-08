@@ -23,7 +23,7 @@ const Navbar = ({onChange}) => {
                         <div className="ms-auto d-none d-lg-block">
                             <div className="input-group">
                             <span className="border-primary input-group-text bg-primary text-white"><i className="fa-solid fa-magnifying-glass"></i></span>
-                            <input value={inputValue} onChange={handleInputChange} placeholder='What do you search?' type="text" className="form-control border-primary" style={{color: '#7a7a7a'}} />
+                            <input value={inputValue} onChange={handleInputChange} placeholder='Was suchst du?' type="text" className="form-control border-primary" style={{color: '#7a7a7a'}} />
                             <button className="btn btn-primary text-white">Search</button>
                         </div>
                     </div>
@@ -31,7 +31,7 @@ const Navbar = ({onChange}) => {
                         <div className="mx-auto my-3 d-lg-none d-sm-block d-xs-block">
                             <div className="input-group">
                                 <span className="border-primary input-group-text bg-primary text-white"><i className="fa-solid fa-magnifying-glass"></i></span>
-                                <input type="text" className="form-control border-primary" style={{color: '#7a7a7a'}} />
+                                <input value={inputValue} onChange={handleInputChange} type="text" placeholder='Was suchst du?' className="form-control border-primary" style={{color: '#7a7a7a'}} />
                                 <button className="btn btn-primary text-white">Search</button>
                             </div>
                         </div>

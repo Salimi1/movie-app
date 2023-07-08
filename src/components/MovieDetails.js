@@ -23,6 +23,7 @@ const MovieDetails = () => {
     const [credits, setCredits] = useState([])
     const [images, setImages] = useState()
     const [trailers, setTrailer] = useState([])
+    const [loading, setLoading] = useState(true)
     
     const iframeTag = useRef()
     const detailsDivTag = useRef()
@@ -51,15 +52,17 @@ const MovieDetails = () => {
             const creditResponse = await axios.get(CREDIT_URL)
             const imageResponse = await axios.get(MOVIE_SHOW_IMAGES)
             const trailerResponse = await axios.get(TRAILER_URL)
-            setDetails(response.data)
+            { response.data ? setDetails(response.data) : movieOrTv = 'tv'}
             setCredits(creditResponse.data.cast)
             setImages(imageResponse.data.backdrops)
             setTrailer(trailerResponse.data.results);
+            setLoading(false)
         }
         fetchDetails()
     }, [id, movieOrTv])
 
-    const {genres, name, original_language, created_by, title, overview, poster_path, release_date, runtime, vote_average} = details;
+    const {genres, name, original_language, created_by, title, overview, poster_path, release_date, runtime, vote_average, last_air_date, last_episode_to_air, episode_run_time} = details;
+
 
 
     const genreList = genres?.map(item => item.name).join(", "); 
@@ -70,7 +73,22 @@ const MovieDetails = () => {
     const YOUTUBE_URL = `https://www.youtube.com/embed/${trailers[mainTrailer]?.key}`
     
     return (
-        <div className='container-fluid text-white'>
+        <div>
+        {loading ? (
+          <div className='d-flex justify-content-center flex-wrap'>
+            <ThreeDots
+              height='80'
+              width='80'
+              radius='9'
+              color='#0d6efd'
+              ariaLabel='three-dots-loading'
+              wrapperStyle={{}}
+              wrapperClassName=''
+              visible={true}
+            />
+          </div>
+        ) : (
+            <div className='container-fluid text-white'>
             <iframe ref={iframeTag} style={{zIndex: '1', display: 'none'}} className='position-absolute start-50 end-50 translate-middle-x' width="58%" height="415" src={`${YOUTUBE_URL}`} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             <div ref={closeBtn} className='position-absolute start-50' style={{zIndex: '1', top: '85%', display: 'none'}}>
                 <GrClose onClick={closeTrailerHandler} className='btn btn-danger p-0 fs-1'/>
@@ -88,9 +106,14 @@ const MovieDetails = () => {
                                 <AiFillStar className='text-warning ms-2'/>
                             </div>
                         </div>
-                        <div className=''>
-                            <span className='border-end border-secondary pe-2 me-2'>{release_date && release_date}</span>
-                            <span>{runtime && runtime} min</span>
+                        <div className=' d-flex justify-content-between'>
+                            <div>
+                                <span className='border-end border-secondary pe-2 me-2'>{release_date || last_air_date}</span>
+                                <span>{runtime || episode_run_time} min</span>
+                            </div>
+                            <div>
+                                {last_episode_to_air && `Letzte Folge: ${last_episode_to_air.episode_number}`}
+                            </div>
                         </div>
                         <div id='trailerCon' className='my-3'>
                             <span className='text-warning fw-bold'>Overview</span>
@@ -126,7 +149,8 @@ const MovieDetails = () => {
                 </div>
             </div>
         </div>
+        )}
+      </div>
     );
 };
-
 export default MovieDetails;
