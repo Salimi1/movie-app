@@ -50,37 +50,38 @@ const ActorDetailsPage = () => {
             <div className='container-fluid text-white mb-4'>
             <div className='row p-4'>
                  <div className='col-12 text-center col-md-4 mt-2'>
-                     {profile_path && <img className='w-100' src={`${IMAGE_URL}/${profile_path}`} alt="Actor" />}
+                    <img className='w-100' src={profile_path ? `${IMAGE_URL}/${profile_path}` : 'https://wemme-events.de/wp-content/themes/wemme/assets/images/no_image.jpg'} alt="" />
                  </div>
                  <div className='col-12 col-md-8 mt-5'>
                      <div className='row fw-bold'>
                          <h2 className='col-md-4'>{name}</h2>
                          <div className='col-md-8 mt-5 mt-md-0 text-end'>
-                             <p className='text-danger fs-6'>Geboren am: {birthday}</p>
-                             <p className='text-warning fs-6'>Geboren in: {place_of_birth}</p>
+                             <p className='text-danger fs-6'>Geboren am: {birthday || 'unbekannt'}</p>
+                             <p className='text-warning fs-6'>Geboren in: {place_of_birth || 'unbekannt'}</p>
                          </div>
                      </div>
                      <hr/>
                      <div>
                          <h5 className='text-primary'>Biografie</h5>
-                         <p>{biography}</p>
+                         <p>{biography || 'Es gibt keine Infos über diese/r Schauspieler/in'}</p>
                      </div>
-                     <h2 className='mt-5 text-primary'>Bekannt für</h2>
-                     <div className='d-flex' style={{ overflow: 'scroll' }}>
-                         {personCredits.map(item => (
-                             <div key={item.id}>
-                             {item.poster_path && (
-                                 <div>
-                                     <Link to={`/movie/details/${item.id}`}>
-                                         <img className='me-1' style={{ width: '150px', height: '230px' }} src={`${IMAGE_URL}${item.poster_path}`} />
-                                     </Link>
-                                 </div>
-                             )}
-                             {item.poster_path ? <span className='fs-6'>{item.title}</span> : null}
-                             </div>
-                         ))}
-                     </div>
- 
+                     {personCredits && <div>
+                        <h2 className='mt-5 text-primary'>Bekannt für</h2>
+                        <div className='d-flex' style={{ overflow: 'scroll' }}>
+                            {personCredits.map(item => (
+                                <div className='py-3' key={item.id}>
+                                {item.poster_path && (
+                                    <div>
+                                        <Link to={`/movie/details/${item.id}`}>
+                                            <img className='me-1' style={{ width: '150px', height: '230px' }} src={`${IMAGE_URL}${item.poster_path}`} />
+                                        </Link>
+                                    </div>
+                                )}
+                                {item.poster_path ? <span className='fs-6'>{item.title}</span> : null}
+                                </div>
+                            ))}
+                        </div>
+                     </div>}
                  </div>
             </div> 
          </div>

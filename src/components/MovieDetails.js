@@ -96,11 +96,11 @@ const MovieDetails = () => {
             <div ref={detailsDivTag} style={{zIndex:'-1'}} className='w-100 mt-4'>
                 <div className='row d-flex justify-content-between align-items-start'>
                     <div className='col-12 col-md-6 col-lg-5 d-flex justify-content-center align-items-center'>
-                        <img className='w-75 w-md-100 rounded-2' src={`${IMAGE_URL}${poster_path}`}/>
+                        <img alt='image' className='w-75 w-md-100 rounded-2' src={ poster_path ? `${IMAGE_URL}${poster_path}` : 'https://praeger-schlauchtechnik.de/img/sample.png'}/>
                     </div>
                     <div className='col-12 col-md-6 col-lg-7 mt-5 mt-md-0'>
                         <div className='d-flex justify-content-between'>
-                            <h2 className='text-white'>{title || name}</h2>
+                            <h2 className='text-white'>{title || name || ''}</h2>
                             <div className='fs-3'>
                                 <span>{vote_average?.toFixed(1)}</span>
                                 <AiFillStar className='text-warning ms-2'/>
@@ -122,7 +122,7 @@ const MovieDetails = () => {
                         <span className=''>{overview}</span>
                         <div className='d-flex mt-3'>
                             <span className='text-secondary'>Direktor/in:</span>
-                            <p className='ms-2'>{direktorList}</p>
+                            <p className='ms-2'>{direktorList || 'unbekannt'}</p>
                         </div>
                         <div className='d-flex mt-3'>
                             <span className='text-secondary'>Genre:</span>

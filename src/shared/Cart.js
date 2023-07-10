@@ -8,7 +8,7 @@ const Cart = ({itemData, movieOrTv}) => {
     const IMAGE_URL = 'https://image.tmdb.org/t/p/w500'
     return (
         <div style={{width: '200px'}} className='card text-white m-3'>
-            <img src={`${IMAGE_URL}${poster_path}`} className='card-img' style={{filter: 'brightness(0.6)'}} />
+            <img src={poster_path ? `${IMAGE_URL}${poster_path}` : 'https://praeger-schlauchtechnik.de/img/sample.png'} className='card-img h-100' style={{filter: 'brightness(0.6)'}} />
             <div className='card-img-overlay d-flex flex-column justify-content-end'>
                 <div className='row'>
                     <h6 className='card-title py-1 col-12 rounded-4 bg-warning col-12'>{titleShorter(name || title)}...</h6>

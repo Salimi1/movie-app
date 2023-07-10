@@ -1,4 +1,3 @@
-
 import React, { createContext, useEffect, useState } from 'react';
 import { getShows } from '../services/api';
 

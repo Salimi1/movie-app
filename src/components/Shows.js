@@ -59,4 +59,4 @@ const Shows = ({navbarValue}) => {
   );
 };
 
-export default Shows;
+export default Shows
