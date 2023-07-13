@@ -31,7 +31,7 @@ const Navbar = ({onChange}) => {
                         <div className="mx-auto my-3 d-lg-none d-sm-block d-xs-block">
                             <div className="input-group">
                                 <span className="border-primary input-group-text bg-primary text-white"><i className="fa-solid fa-magnifying-glass"></i></span>
-                                <input value={inputValue} onChange={handleInputChange} type="text" placeholder='Was suchst du?' className="form-control border-primary" style={{color: '#7a7a7a'}} />
+                                <input onChange={handleInputChange} type="text" placeholder='Was suchst du?' className="form-control border-primary" style={{color: '#7a7a7a'}} />
                                 <button className="btn btn-primary text-white">Search</button>
                             </div>
                         </div>
@@ -41,12 +41,6 @@ const Navbar = ({onChange}) => {
                         <li className="nav-item dropdown">
                             <Link data-bs-toggle='dropdown' className="nav-link mx-2 dropdown-toggle text-uppercase" to="#" aria-expanded="false">Shows</Link>
                             <ul className='dropdown-menu'>
-                                <li>
-                                    <Link className='dropdown-item' to='shows/28'>action</Link>
-                                </li>
-                                <li>
-                                    <Link className='dropdown-item' to='shows/12'>Adventure</Link>
-                                </li>
                                 <li>
                                     <Link className='dropdown-item' to='shows/16'>Animation</Link>
                                 </li>
@@ -66,18 +60,6 @@ const Navbar = ({onChange}) => {
                                     <Link className='dropdown-item' to='shows/10751'>Family</Link>
                                 </li>
                                 <li>
-                                    <Link className='dropdown-item' to='shows/14'>Fantasy</Link>
-                                </li>
-                                <li>
-                                    <Link className='dropdown-item' to='shows/36'>History</Link>
-                                </li>
-                                <li>
-                                    <Link className='dropdown-item' to='shows/27'>Horror</Link>
-                                </li>
-                                <li>
-                                    <Link className='dropdown-item' to='shows/10402'>Music</Link>
-                                </li>
-                                <li>
                                     <Link className='dropdown-item' to='shows/9648'>Mystery</Link>
                                 </li>
                                 <li>
@@ -85,15 +67,6 @@ const Navbar = ({onChange}) => {
                                 </li>
                                 <li>
                                     <Link className='dropdown-item' to='shows/878'>Science-Fiction</Link>
-                                </li>
-                                <li>
-                                    <Link className='dropdown-item' to='shows/10770'>TV Movie</Link>
-                                </li>
-                                <li>
-                                    <Link className='dropdown-item' to='shows/53'>Thrailler</Link>
-                                </li>
-                                <li>
-                                    <Link className='dropdown-item' to='shows/10752'>War</Link>
                                 </li>
                                 <li>
                                     <Link className='dropdown-item' to='shows/37'>Western</Link>
