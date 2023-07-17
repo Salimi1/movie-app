@@ -73,7 +73,7 @@ const MovieDetails = () => {
     const YOUTUBE_URL = `https://www.youtube.com/embed/${trailers[mainTrailer]?.key}`
     
     return (
-        <div>
+        <div className='py-4'>
         {loading ? (
           <div className='d-flex justify-content-center flex-wrap'>
             <ThreeDots
@@ -141,11 +141,11 @@ const MovieDetails = () => {
 
             <div className='my-5 px-3 mx-3 mx-md-0'>
                 <h3 className='text-white pt-5 mb-4'>Hauptdarsteller</h3>
-                <div className='row ms-sm-2 ms-md-0 d-flex flex-md-nowrap justify-content-md-evenly'>
+                <div className='row ms-sm-2 ms-md-0 d-flex flex-md-nowrap justify-content-md-evenly justify-content-center'>
                     {slicedActors.map(actor => <ActorCart data={actor} key={actor.cast_id} />)}
                 </div>
                 <div className='text-center mt-5'>
-                    <Link className='btn w-25 fs-2 btn-light' to={`/${movieOrTv}/${id}/characters`}>Mehr anzeigen</Link>
+                    <Link className='btn w-s-50 px-md-5 fs-md-2 w-md-25 btn-light' to={`/${movieOrTv}/${id}/characters`}>Mehr anzeigen</Link>
                 </div>
             </div>
         </div>

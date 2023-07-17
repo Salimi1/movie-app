@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 export const searchBoxValueContext = createContext()
 const Navbar = ({onChange}) => {
     const [inputValue, setInputValue] = useState('');
-
     const handleInputChange = (event) => {
       const newValue = event.target.value;
       setInputValue(newValue);
@@ -23,7 +22,7 @@ const Navbar = ({onChange}) => {
                         <div className="ms-auto d-none d-lg-block">
                             <div className="input-group">
                             <span className="border-primary input-group-text bg-primary text-white"><i className="fa-solid fa-magnifying-glass"></i></span>
-                            <input value={inputValue} onChange={handleInputChange} placeholder='Was suchst du?' type="text" className="form-control border-primary" style={{color: '#7a7a7a'}} />
+                            <input onBlur={() => setInputValue('') & onChange('')} value={inputValue} onChange={handleInputChange} placeholder='Was suchst du?' type="text" className="form-control border-primary" style={{color: '#7a7a7a'}} />
                             <button className="btn btn-primary text-white">Search</button>
                         </div>
                     </div>
@@ -31,7 +30,7 @@ const Navbar = ({onChange}) => {
                         <div className="mx-auto my-3 d-lg-none d-sm-block d-xs-block">
                             <div className="input-group">
                                 <span className="border-primary input-group-text bg-primary text-white"><i className="fa-solid fa-magnifying-glass"></i></span>
-                                <input onChange={handleInputChange} type="text" placeholder='Was suchst du?' className="form-control border-primary" style={{color: '#7a7a7a'}} />
+                                <input onBlur={() => setInputValue('') & onChange('')} onChange={handleInputChange} type="text" placeholder='Was suchst du?' className="form-control border-primary" style={{color: '#7a7a7a'}} />
                                 <button className="btn btn-primary text-white">Search</button>
                             </div>
                         </div>

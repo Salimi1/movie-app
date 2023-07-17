@@ -12,7 +12,7 @@ const Cart = ({itemData, movieOrTv}) => {
             <div className='card-img-overlay d-flex flex-column justify-content-end'>
                 <div className='row'>
                     <h6 className='card-title py-1 col-12 rounded-4 bg-warning col-12'>{titleShorter(name || title)}...</h6>
-                    <h6 className='card-title py-1 mt-2 col-12  rounded-4' style={{backgroundColor: '#ffffff78'}}>Rateing: {vote_average.toFixed(2)}</h6>
+                    <h6 className='card-title py-1 mt-2 col-12  rounded-4' style={{backgroundColor: '#ffffff78'}}>Rateing: {vote_average?.toFixed(2)}</h6>
                     <div className='d-flex ps-1 pe-0 justify-content-between align-items-center'>
                         <h6 className='card-title'>{release_date || first_air_date}</h6>
                         <Link to={`/${movieOrTv}/details/${id}`} className='text-center btn btn-warning text-white rounded-5 p-1'>Details

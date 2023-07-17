@@ -4,7 +4,8 @@ import { ShowContext } from '../context/ShowContextProvider';
 import { TrndFilmsContext } from '../context/TrendFilmsContextProvider';
 import { TrendShowsContext } from '../context/TrendShowsContextProvider';
 import { movieShowHandler, getTrendmovies } from '../services/api';
-
+import axios from 'axios';
+import Cart from '../shared/Cart';
 // Spinners
 import { ThreeDots } from 'react-loader-spinner';
 
@@ -15,19 +16,26 @@ const Home = ({ navbarValue }) => {
   const trendShows = useContext(TrendShowsContext);
   const allMovieShows = [...movies, ...shows];
   const [loading, setLoading] = useState(true);
-  const [filteredMoviesShows, setFilteredMoviesShows] = useState([]);
+  const [searchData, setSearchData] = useState([]);
 
   useEffect(() => {
-    const filterMoviesShows = () => {
-      const filteredMoviesShows = allMovieShows.filter(
-        item => (item.title && item.title.includes(navbarValue)) || (item.name && item.name.includes(navbarValue))
-      );
-      setFilteredMoviesShows(filteredMoviesShows);
-      setLoading(false);
+    const fetchSearchBarValue = async () => {
+      try {
+        const API_KEY = '211669938f46a27e2998bb698a8efade';
+        const encodedValue = encodeURIComponent(navbarValue);
+        const URL = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&query=${encodedValue}`;
+        const response = await axios.get(URL);
+        const searchData = response.data.results;
+        setSearchData(searchData);
+        setLoading(false);
+      } catch (error) {
+        console.error('Fehler beim Abrufen der Suchdaten:', error);
+        setLoading(false);
+      }
     };
 
-    filterMoviesShows();
-  }, [navbarValue, allMovieShows]);
+    fetchSearchBarValue();
+  }, [navbarValue]);
 
   return (
     <div>
@@ -44,28 +52,31 @@ const Home = ({ navbarValue }) => {
             visible={true}
           />
         </div>
-      ) : (
+      ) : searchData.length === 0 ? (
         <div style={{ backgroundColor: '#1b1c22', paddingTop: '40px' }}>
-          <h2 className='text-white'>
-            {filteredMoviesShows.length > 0 && navbarValue}
-          </h2>
-          <div style={{ backgroundColor: '#1b1c22', paddingTop: '40px' }}>
-            <div>
-              <h3 className='text-white ms-5 mt-4 row'>Serien</h3>
-              {movieShowHandler(shows, 'tv')}
-            </div>
-            <div>
-              <h3 className='text-white ms-5 mt-4'>Neuste Serien</h3>
-              {movieShowHandler(trendShows, 'tv')}
-            </div>
-            <div>
-              <h3 className='text-white ms-5 mt-4 row'>Filme</h3>
-              {movieShowHandler(movies, 'movie')}
-            </div>
-            <div>
-              <h3 className='text-white ms-5 mt-4'>Neuste Filme</h3>
-              {movieShowHandler(trendFilms, 'movie')}
-            </div>
+          <div>
+            <h3 className='text-white ms-5 mt-4 row'>Serien</h3>
+            {movieShowHandler(shows, 'tv')}
+          </div>
+          <div>
+            <h3 className='text-white ms-5 mt-4'>Neuste Serien</h3>
+            {movieShowHandler(trendShows, 'tv')}
+          </div>
+          <div>
+            <h3 className='text-white ms-5 mt-4 row'>Filme</h3>
+            {movieShowHandler(movies, 'movie')}
+          </div>
+          <div className='pb-5'>
+            <h3 className='text-white ms-5 mt-4'>Neuste Filme</h3>
+            {movieShowHandler(trendFilms, 'movie')}
+          </div>
+        </div>
+      ) : (
+        <div className='container-fluid'>
+          <div className='d-flex justify-content-center flex-row flex-wrap'>
+            {searchData.map(item =>
+              <Cart key={item.id} itemData={item} movieOrTv={item.media_type} />
+            )}
           </div>
         </div>
       )}
@@ -74,3 +85,23 @@ const Home = ({ navbarValue }) => {
 };
 
 export default Home;
+
+
+/* <div style={{ backgroundColor: '#1b1c22', paddingTop: '40px' }}>
+  <div>
+    <h3 className='text-white ms-5 mt-4 row'>Serien</h3>
+    {movieShowHandler(shows, 'tv')}
+  </div>
+  <div>
+    <h3 className='text-white ms-5 mt-4'>Neuste Serien</h3>
+    {movieShowHandler(trendShows, 'tv')}
+  </div>
+  <div>
+    <h3 className='text-white ms-5 mt-4 row'>Filme</h3>
+    {movieShowHandler(movies, 'movie')}
+  </div>
+  <div>
+    <h3 className='text-white ms-5 mt-4'>Neuste Filme</h3>
+    {movieShowHandler(trendFilms, 'movie')}
+  </div>
+</div> */
