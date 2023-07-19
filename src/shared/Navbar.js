@@ -78,10 +78,10 @@ const Navbar = ({onChange}) => {
                     </ul>
                     <ul className="navbar-nav ms-auto ">
                         <li className="nav-item">
-                            <Link className="nav-link mx-2 text-dark text-uppercase btn btn-light" to="#"><i className="fa-solid fa-cart-shopping me-1"></i> Login</Link>
+                            <Link className="nav-link mx-2 text-dark text-uppercase btn btn-light" to="account/login"><i className="fa-solid fa-cart-shopping me-1"></i> Anmelden</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link mx-2 text-light text-uppercase btn btn-primary mt-2 mt-lg-0" to="#"><i className="fa-solid fa-circle-user me-1"></i> Account</Link>
+                            <Link className="nav-link mx-2 text-light text-uppercase btn btn-primary mt-2 mt-lg-0" to="account/registrieren"><i className="fa-solid fa-circle-user me-1"></i>Registrieren</Link>
                         </li>
                     </ul>
                     </div>

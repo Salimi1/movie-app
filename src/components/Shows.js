@@ -101,29 +101,3 @@ const Shows = ({navbarValue}) => {
 };
 
 export default Shows;
-
-
-
-
-
-
-        // <div style={{ backgroundColor: '#1b1c22', paddingTop: '40px' }}>
-        //   <div style={{ backgroundColor: '#1b1c22', paddingTop: '40px' }}>
-        //     <div>
-        //       <h3 className='text-white ms-5 mt-4 row'>Serien</h3>
-        //       {movieShowHandler(shows, 'tv')}
-        //     </div>
-        //     <div>
-        //       <h3 className='text-white ms-5 mt-4'>Neuste Serien</h3>
-        //       {movieShowHandler(trendShows, 'tv')}
-        //     </div>
-        //     <div>
-        //       <h3 className='text-white ms-5 mt-4 row'>Filme</h3>
-        //       {movieShowHandler(movies, 'movie')}
-        //     </div>
-        //     <div>
-        //       <h3 className='text-white ms-5 mt-4'>Neuste Filme</h3>
-        //       {movieShowHandler(trendFilms, 'movie')}
-        //     </div>
-        //   </div>
-        // </div>

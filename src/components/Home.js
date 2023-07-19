@@ -19,6 +19,7 @@ const Home = ({ navbarValue }) => {
   const [searchData, setSearchData] = useState([]);
 
   useEffect(() => {
+    setLoading(true)
     const fetchSearchBarValue = async () => {
       try {
         const API_KEY = '211669938f46a27e2998bb698a8efade';

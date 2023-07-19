@@ -8,6 +8,7 @@ import MovieDetails from './components/MovieDetails';
 import Shows from './components/Shows';
 import Characters from './components/Characters';
 import ActorDetailsPage from './components/ActorDetailsPage';
+import Loginpage from './components/Loginpage';
 //Context
 import MovieContextProvider from './context/MovieContextProvider';
 import ShowContextProvider from './context/ShowContextProvider';
@@ -33,6 +34,7 @@ function App() {
                 <Route path='/:movieOrTv/details/:id' element={<MovieDetails/>}/>
                 <Route path='/:type/:id/characters' element={<Characters/>}/>
                 <Route path='/person/:id/details' element={<ActorDetailsPage/>}/>
+                <Route path='account/:loginOrSignup' element={<Loginpage/>} />
               </Routes>
               <Footer/>
             </TrendShowsContextProvider>
