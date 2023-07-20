@@ -135,16 +135,16 @@ const Loginpage = () => {
               <h5 className='text-light'>Registrieren</h5>
             </div>
             <div className='mt-4'>
-              <label htmlFor='name' className='form-label'>
-                Vollständiger Name
+              <label htmlFor='name' className='form-label text-secondary'>
+                Name
               </label>
               <div className='position-relative'>
-                <input onChange={handleSignupNameChange} value={signupNameValue} type='text' id='name' className={`form-control pe-3 rounded-1 text-secondary ${isSignupNameValueValid ? 'border border-2 border-primary' : 'border border-2 border-primary'}`} />
+                <input onChange={handleSignupNameChange} value={signupNameValue} type='text' id='name' className={`form-control pe-3 rounded-1 text-secondary ${signupNameValue ? 'border border-2 border-primary' : 'border border-2 border-danger'}`} />
                 <AiOutlineUser style={{ right: '5px', top: '9px' }} className='text-primary fs-5 position-absolute' />
               </div>
             </div>
             <div className='mt-4'>
-              <label htmlFor='email' className='form-label'>
+              <label htmlFor='email' className='form-label text-secondary'>
                 E-Mail
               </label>
               <div className='position-relative'>
@@ -154,7 +154,7 @@ const Loginpage = () => {
               </div>
             </div>
             <div className='mt-4'>
-              <label htmlFor='password' className='form-label'>
+              <label htmlFor='password' className='form-label text-secondary'>
                 Passwort
               </label>
               <div className='position-relative'>

@@ -56,8 +56,8 @@ const ActorDetailsPage = () => {
                      <div className='row fw-bold'>
                          <h2 className='col-md-4'>{name}</h2>
                          <div className='col-md-8 mt-5 mt-md-0 text-end'>
-                             <p className='text-danger fs-6'>Geboren am: {birthday || 'unbekannt'}</p>
-                             <p className='text-warning fs-6'>Geboren in: {place_of_birth || 'unbekannt'}</p>
+                             <p className='text-decondary fs-6'>Geboren am: {birthday || 'unbekannt'}</p>
+                             <p className='text-decondary fs-6'>Geboren in: {place_of_birth || 'unbekannt'}</p>
                          </div>
                      </div>
                      <hr/>

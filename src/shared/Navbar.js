@@ -1,6 +1,9 @@
 import React, { useEffect, useRef, useState, createContext } from 'react';
 import Logo from '../assets/pictures/—Pngtree—vector popcorn icon_4002575.png'
 import { Link } from 'react-router-dom'
+//Icons
+import { AiOutlineDelete } from "react-icons/ai";
+
 
 export const searchBoxValueContext = createContext()
 const Navbar = ({onChange}) => {
@@ -22,15 +25,18 @@ const Navbar = ({onChange}) => {
                         <div className="ms-auto d-none d-lg-block">
                             <div className="input-group">
                             <span className="border-primary input-group-text bg-primary text-white"><i className="fa-solid fa-magnifying-glass"></i></span>
-                            <input onBlur={() => setInputValue('') & onChange('')} value={inputValue} onChange={handleInputChange} placeholder='Was suchst du?' type="text" className="form-control border-primary" style={{color: '#7a7a7a'}} />
-                            <button className="btn btn-primary text-white">Search</button>
+                            <input value={inputValue} onChange={handleInputChange} placeholder='Was suchst du?' type="text" className="form-control position-relative border-primary" style={{color: '#7a7a7a'}} />
+                            <AiOutlineDelete onClick={() => setInputValue('') & onChange('')} role='button' style={{top: '10px', left: '5px'}} className='position-absolute text-white' />
+                            <button className="btn btn-primary text-white">Suchen</button>
                         </div>
                     </div>
                     <ul className="navbar-nav ms-auto ">
                         <div className="mx-auto my-3 d-lg-none d-sm-block d-xs-block">
                             <div className="input-group">
                                 <span className="border-primary input-group-text bg-primary text-white"><i className="fa-solid fa-magnifying-glass"></i></span>
-                                <input onBlur={() => setInputValue('') & onChange('')} onChange={handleInputChange} type="text" placeholder='Was suchst du?' className="form-control border-primary" style={{color: '#7a7a7a'}} />
+                                <input value={inputValue} onChange={handleInputChange} placeholder='Was suchst du?' type="text" className="form-control position-relative border-primary" style={{color: '#7a7a7a'}} />
+                                <AiOutlineDelete onClick={() => setInputValue('') & onChange('')} role='button' style={{top: '10px', left: '5px'}} className='position-absolute text-white' />
+
                                 <button className="btn btn-primary text-white">Search</button>
                             </div>
                         </div>
@@ -72,12 +78,71 @@ const Navbar = ({onChange}) => {
                                 </li>
                             </ul>
                         </li>
-                        <li className="nav-item">
-                            <Link className="nav-link mx-2 text-uppercase" to="#">Movies</Link>
+                        <li className="nav-item dropdown">
+                            <Link data-bs-toggle='dropdown' className="nav-link mx-2 dropdown-toggle text-uppercase" to="#" aria-expanded="false">Movies</Link>
+                            <ul className='dropdown-menu'>
+                                <li>
+                                    <Link className='dropdown-item' to='movies/28'>Action</Link>
+                                </li>
+                                <li>
+                                    <Link className='dropdown-item' to='movies/12'>Adventure</Link>
+                                </li>
+                                <li>
+                                    <Link className='dropdown-item' to='movies/16'>Animation</Link>
+                                </li>
+                                <li>
+                                    <Link className='dropdown-item' to='movies/35'>Comedy</Link>
+                                </li>
+                                <li>
+                                    <Link className='dropdown-item' to='movies/80'>Crime</Link>
+                                </li>
+                                <li>
+                                    <Link className='dropdown-item' to='movies/99'>Documentary</Link>
+                                </li>
+                                <li>
+                                    <Link className='dropdown-item' to='movies/18'>Drama</Link>
+                                </li>
+                                <li>
+                                    <Link className='dropdown-item' to='movies/10751'>Family</Link>
+                                </li>
+                                <li>
+                                    <Link className='dropdown-item' to='movies/14'>Fantasy</Link>
+                                </li>
+                                <li>
+                                    <Link className='dropdown-item' to='movies/36'>History</Link>
+                                </li>
+                                <li>
+                                    <Link className='dropdown-item' to='movies/27'>Horror</Link>
+                                </li>
+                                <li>
+                                    <Link className='dropdown-item' to='movies/10402'>Music</Link>
+                                </li>
+                                <li>
+                                    <Link className='dropdown-item' to='movies/9648'>Mystery</Link>
+                                </li>
+                                <li>
+                                    <Link className='dropdown-item' to='movies/10749'>Romance</Link>
+                                </li>
+                                <li>
+                                    <Link className='dropdown-item' to='movies/878'>Science Fiction</Link>
+                                </li>
+                                <li>
+                                    <Link className='dropdown-item' to='movies/10770'>TV Movie</Link>
+                                </li>
+                                <li>
+                                    <Link className='dropdown-item' to='movies/53'>Thriller</Link>
+                                </li>
+                                <li>
+                                    <Link className='dropdown-item' to='movies/10752'>War</Link>
+                                </li>
+                                <li>
+                                    <Link className='dropdown-item' to='movies/37'>Western</Link>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                     <ul className="navbar-nav ms-auto ">
-                        <li className="nav-item">
+                        <li className="nav-item dropdown">
                             <Link className="nav-link mx-2 text-dark text-uppercase btn btn-light" to="account/login"><i className="fa-solid fa-cart-shopping me-1"></i> Anmelden</Link>
                         </li>
                         <li className="nav-item">
@@ -92,3 +157,5 @@ const Navbar = ({onChange}) => {
 }
 
 export default Navbar;
+
+// onBlur={() => setInputValue('') & onChange('')}

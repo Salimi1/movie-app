@@ -1,6 +1,8 @@
 import axios, { all } from 'axios'
+import { Link } from 'react-router-dom';
 //Components
 import Cart from '../shared/Cart';
+import { useState } from 'react';
 
 const Movie_API_URL = 'https://api.themoviedb.org/3/discover/movie?api_key=211669938f46a27e2998bb698a8efade&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate';
 
@@ -39,11 +41,13 @@ const titleShorter = (title) => {
     return newTitle
 }
 
-const movieShowHandler = (Info, movieTv) => {
-    const dataBox = Info.slice(0,4);
+
+const movieShowHandler = (Info, movieTv, lastItemIndex) => {
+    const lastItem = lastItemIndex;
+    const dataBox = Info.slice(0, lastItem);
     return (
         <div className='container-fluid'>
-            <div className='d-flex justify-content-center flex-wrap'>
+            <div className='d-flex justify-content-center justify-md-content-between justify-content-sm-center flex-wrap'>
                 {
                     dataBox.map(item => 
                         <Cart
@@ -52,15 +56,10 @@ const movieShowHandler = (Info, movieTv) => {
                         movieOrTv={movieTv}
                     />)
                 }
-
             </div>
         </div>  
     )
 }
 
-const NavbarMaker = (value) => {
-    const newValue = value
-    
-}
 
 export {getFilms, getShows, titleShorter, movieShowHandler, getTrendFilms, getTrendShows}

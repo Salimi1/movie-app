@@ -6,8 +6,8 @@ import axios from 'axios';
 //Spinner
 import { ThreeDots } from 'react-loader-spinner';
 
-const Shows = ({navbarValue}) => {
-  const [allShows, setAllShows] = useState([]);
+const Movies = ({navbarValue}) => {
+  const [allMovies, setAllMovies] = useState([]);
   const [searchData, setSearchData] = useState([])
   const { genreId } = useParams();
   const [currentPage, setCurrentPage] = useState(1);
@@ -16,28 +16,29 @@ const Shows = ({navbarValue}) => {
   const API_KEY = '211669938f46a27e2998bb698a8efade';
   const btnCon = useRef();
   const value = navbarValue;
-  useEffect(() => {
-    setIsLoading(true)
-    const fetchSearchBarValue = async () => {
-      try {
-        const API_KEY = '211669938f46a27e2998bb698a8efade';
-        const encodedValue = encodeURIComponent(navbarValue);
-        const URL = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&query=${encodedValue}`;
-        const response = await axios.get(URL);
-        const searchData = response.data.results;
-        setSearchData(searchData);
-      } catch (error) {
-        console.error('Fehler beim Abrufen der Suchdaten:', error);
-      }
-      setIsLoading(false);
-    };
 
-    fetchSearchBarValue();
+  useEffect(() => {
+      setIsLoading(true)
+      const fetchSearchBarValue = async () => {
+        try {
+          const API_KEY = '211669938f46a27e2998bb698a8efade';
+          const encodedValue = encodeURIComponent(navbarValue);
+          const URL = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&query=${encodedValue}`;
+          const response = await axios.get(URL);
+          const searchData = response.data.results;
+          setSearchData(searchData);
+          setIsLoading(false);
+        } catch (error) {
+          console.error('Fehler beim Abrufen der Suchdaten:', error);
+        }
+      };
+  
+      fetchSearchBarValue();
     const fetchData = async () => {
       try {
-        const URL = `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=${currentPage}&sort_by=popularity.desc&with_genres=${genreId}&api_key=${API_KEY}`;
+        const URL = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_null_first_air_dates=false&language=en-US&page=${currentPage}&sort_by=popularity.desc&with_genres=${genreId}&api_key=${API_KEY}`;
         const response = await axios.get(URL);
-        setAllShows(response.data.results);
+        setAllMovies(response.data.results);
         setIsLoading(false)
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -84,13 +85,13 @@ const Shows = ({navbarValue}) => {
               wrapperClassName=''
               visible={true}
               />
-          </div>) : (<div className='container-fluid'>
+          </div>) : searchData.length === 0 ? (<div className='container-fluid'>
       <div className='d-flex justify-content-center flex-wrap'>
-        { searchData.length > 0 ? (searchData.map(item => <Cart key={item.id} itemData={item} movieOrTv={item.media_type} />)) : (allShows.length > 0 ? (allShows.map((item) => (
-          <Cart itemData={item} movieOrTv='tv' key={item.id} />
-        ))) : (<h4 className='text-danger py-4'>Leider nichts gefunden</h4>))}
+        {allMovies ?( allMovies.map((item) => (
+          <Cart itemData={item} movieOrTv='movie' key={item.id} />
+        ))) : <h2 className='text-danger'>Nichts gefunden</h2>}
       </div>
-      {allShows.length > 0 && (<div className='text-center mt-4'>
+      <div className='text-center mt-4'>
         <div className='btn-group' ref={btnCon}>
           <Link className='btn btn-primary' onClick={lastFourPageHandler}>
             last
@@ -108,10 +109,18 @@ const Shows = ({navbarValue}) => {
             next
           </Link>
         </div>
-      </div>)}
-    </div>)}
+      </div>
+    </div>) : (
+        <div className='container-fluid'>
+        <div className='d-flex justify-content-center flex-row flex-wrap'>
+          {searchData.map(item =>
+            <Cart key={item.id} itemData={item} movieOrTv={item.media_type} />
+          )}
+        </div>
+      </div>
+    )}
     </div>
   );
 };
 
-export default Shows;
+export default Movies;

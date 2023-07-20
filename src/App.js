@@ -6,6 +6,7 @@ import Navbar from '../src/shared/Navbar'
 import Home from './components/Home'
 import MovieDetails from './components/MovieDetails';
 import Shows from './components/Shows';
+import Movies from './components/Movies';
 import Characters from './components/Characters';
 import ActorDetailsPage from './components/ActorDetailsPage';
 import Loginpage from './components/Loginpage';
@@ -31,6 +32,7 @@ function App() {
                 <Route path='*' element={<Navigate to='/home'/>} />
                 <Route path='/home' element={<Home navbarValue={navbarValue}/>}/>
                 <Route path='/shows/:genreId' element={<Shows navbarValue={navbarValue}/>}/>
+                <Route path='/movies/:genreId' element={<Movies navbarValue={navbarValue} />} />
                 <Route path='/:movieOrTv/details/:id' element={<MovieDetails/>}/>
                 <Route path='/:type/:id/characters' element={<Characters/>}/>
                 <Route path='/person/:id/details' element={<ActorDetailsPage/>}/>

@@ -4,6 +4,7 @@ import { ShowContext } from '../context/ShowContextProvider';
 import { TrndFilmsContext } from '../context/TrendFilmsContextProvider';
 import { TrendShowsContext } from '../context/TrendShowsContextProvider';
 import { movieShowHandler, getTrendmovies } from '../services/api';
+import { Link } from 'react-router-dom'
 import axios from 'axios';
 import Cart from '../shared/Cart';
 // Spinners
@@ -14,9 +15,14 @@ const Home = ({ navbarValue }) => {
   const shows = useContext(ShowContext);
   const trendFilms = useContext(TrndFilmsContext);
   const trendShows = useContext(TrendShowsContext);
-  const allMovieShows = [...movies, ...shows];
   const [loading, setLoading] = useState(true);
   const [searchData, setSearchData] = useState([]);
+
+  const [lastItem1, setLastItem1] = useState(5)
+  const [lastItem2, setLastItem2] = useState(5)
+  const [lastItem3, setLastItem3] = useState(5)
+  const [lastItem4, setLastItem4] = useState(5)
+
 
   useEffect(() => {
     setLoading(true)
@@ -38,6 +44,23 @@ const Home = ({ navbarValue }) => {
     fetchSearchBarValue();
   }, [navbarValue]);
 
+  const addHandler1 = (e) => {
+    e.preventDefault()
+    setLastItem1((preventLastItem) => preventLastItem !== 20 ? preventLastItem + 5 : 5)
+  }
+  const addHandler2 = (e) => {
+    e.preventDefault()
+    setLastItem2((preventLastItem) => preventLastItem !== 20 ? preventLastItem + 5 : 5)
+  }
+  const addHandler3 = (e) => {
+    e.preventDefault()
+    setLastItem3((preventLastItem) => preventLastItem !== 20 ? preventLastItem + 5 : 5)
+  }
+  const addHandler4 = (e) => {
+    e.preventDefault()
+    setLastItem4((preventLastItem) => preventLastItem !== 20 ? preventLastItem + 5 : 5)
+  }
+
   return (
     <div>
       {loading ? (
@@ -55,21 +78,29 @@ const Home = ({ navbarValue }) => {
         </div>
       ) : searchData.length === 0 ? (
         <div style={{ backgroundColor: '#1b1c22', paddingTop: '40px' }}>
-          <div>
+
+          <div className='position-relative'>
             <h3 className='text-white ms-5 mt-4 row'>Serien</h3>
-            {movieShowHandler(shows, 'tv')}
+            {movieShowHandler(shows, 'tv', lastItem1)}
+            <Link onClick={addHandler1} className='position-absolute btn btn-secondary mt-2' style={{right: '50px', top: '-10px'}}>Mehr anzeigen</Link>
           </div>
-          <div>
+          <br/>
+          <div className='position-relative mt-5'>
             <h3 className='text-white ms-5 mt-4'>Neuste Serien</h3>
-            {movieShowHandler(trendShows, 'tv')}
+            {movieShowHandler(trendShows, 'tv', lastItem2)}
+            <Link onClick={addHandler2} className='position-absolute btn btn-secondary mt-2' style={{right: '50px', top: '-10px'}}>Mehr anzeigen</Link>
           </div>
-          <div>
+          <br/>
+          <div className='position-relative mt-5'>
             <h3 className='text-white ms-5 mt-4 row'>Filme</h3>
-            {movieShowHandler(movies, 'movie')}
+            {movieShowHandler(movies, 'movie', lastItem3)}
+            <Link onClick={addHandler3} className='position-absolute btn btn-secondary mt-2' style={{right: '50px', top: '-10px'}}>Mehr anzeigen</Link>
           </div>
-          <div className='pb-5'>
+          <br/>
+          <div className='pb-5 position-relative mt-5 mb-5'>
             <h3 className='text-white ms-5 mt-4'>Neuste Filme</h3>
-            {movieShowHandler(trendFilms, 'movie')}
+            {movieShowHandler(trendFilms, 'movie', lastItem4)}
+            <Link onClick={addHandler4} className='position-absolute btn btn-secondary mt-2' style={{right: '50px', top: '-10px'}}>Mehr anzeigen</Link>
           </div>
         </div>
       ) : (
