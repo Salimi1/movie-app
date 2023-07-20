@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 // Icons
 import { AiOutlineMail } from "react-icons/ai";
 import { AiOutlineUser } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
 
-const Loginpage = () => {
+const Loginpage = ({bodyTheme}) => {
   const { loginOrSignup } = useParams();
 
   //Login
@@ -21,6 +21,11 @@ const Loginpage = () => {
   const [isSignupPasswordValueValid, setIsSignupPasswordValueValid] = useState(false);
   const [signupNameValue, setSignupNameValue] = useState('');
   const [isSignupNameValueValid, setIsSignupNameValueValid] = useState(false);
+
+  useEffect(() => {
+    setLoginEmailValue('')
+    setLoginPasswordValue('')
+  },[])
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -71,11 +76,11 @@ const Loginpage = () => {
   };
 
   return (
-    <div className='container-fluid text-light'>
+    <div onLoad={() => setLoginEmailValue('')} className='container-fluid text-light'>
       {loginOrSignup === 'login' ? (
         <div className='w-100 d-flex justify-content-center my-5'>
           <form
-            style={{ backgroundColor: '#343a40' }}
+            style={{ backgroundColor: bodyTheme == 'dark' ? '#343a40' : '#0d6efd' }}
             className='col-10 col-sm-6 col-md-4 col-lg-3 px-3 py-4 rounded-2'
             onSubmit={handleSubmit}
           >
@@ -83,7 +88,7 @@ const Loginpage = () => {
               <h5 className='text-white'>Anmelden</h5>
             </div>
             <div className='mt-4'>
-              <label htmlFor='email' className='form-label text-secondary'>
+              <label htmlFor='email' className={`${bodyTheme == 'dark' ? 'text-secondary' : 'text-light'} form-label`}>
                 E-Mail
               </label>
               <div className='position-relative'>
@@ -96,11 +101,11 @@ const Loginpage = () => {
                     isLoginEmailValueValid ? 'border border-2 border-primary' : 'border border-2 border-danger'
                   }`}
                 />
-                <AiOutlineMail style={{ right: '5px', top: '9px' }} className='text-primary fs-5 position-absolute' />
+                <AiOutlineMail style={{ right: '5px', top: '9px' }} className={`${bodyTheme == 'dark' ? 'text-primary' : 'text-dark'} fs-5 position-absolute`} />
               </div>
             </div>
             <div className='mt-4'>
-              <label htmlFor='password' className='form-label text-secondary'>
+              <label htmlFor='password' className={`${bodyTheme == 'dark' ? 'text-secondary' : 'text-light'} form-label`}>
                 Passwort
               </label>
               <div className='position-relative'>
@@ -113,13 +118,13 @@ const Loginpage = () => {
                     isLoginPasswordValueValid ? 'border border-2 border-primary' : 'border border-2 border-danger'
                   }`}
                 />
-                <RiLockPasswordLine style={{ right: '5px', top: '9px' }} className='text-primary fs-5 position-absolute' />
+                <RiLockPasswordLine style={{ right: '5px', top: '9px' }} className={`${bodyTheme == 'dark' ? 'text-primary' : 'text-dark'} fs-5 position-absolute`} />
               </div>
             </div>
-            <button type='submit' className='btn btn-primary w-100 mt-4'>
+            <button type='submit' className={`btn ${bodyTheme == 'dark' ? 'btn-primary' : 'btn-secondary'} w-100 mt-4`}>
               Anmelden
             </button>
-            <p role='button' className='fs-6 text-secondary text-center mt-2'>
+            <p role='button' className={`fs-6 ${bodyTheme == 'dark' ? 'text-secondary' : 'text-light'} text-center mt-2`}>
               Passwort vergessen?
             </p>
           </form>
@@ -127,7 +132,7 @@ const Loginpage = () => {
       ) : (
         <div className='w-100 d-flex justify-content-center my-5'>
           <form
-            style={{ backgroundColor: '#343a40' }}
+            style={{ backgroundColor: bodyTheme === 'dark' ? '#343a40' : '#0d6efd' }}
             className='col-10 col-sm-6 col-md-4 col-lg-3 p-4 pb-5 rounded-2'
             onSubmit={handleSubmit}
           >
@@ -135,7 +140,7 @@ const Loginpage = () => {
               <h5 className='text-light'>Registrieren</h5>
             </div>
             <div className='mt-4'>
-              <label htmlFor='name' className='form-label text-secondary'>
+              <label htmlFor='name' className={`${bodyTheme == 'dark' ? 'text-secondary' : 'text-light'} form-label`}>
                 Name
               </label>
               <div className='position-relative'>
@@ -144,7 +149,7 @@ const Loginpage = () => {
               </div>
             </div>
             <div className='mt-4'>
-              <label htmlFor='email' className='form-label text-secondary'>
+              <label htmlFor='email' className={`${bodyTheme == 'dark' ? 'text-secondary' : 'text-light'} form-label`}>
                 E-Mail
               </label>
               <div className='position-relative'>
@@ -154,7 +159,7 @@ const Loginpage = () => {
               </div>
             </div>
             <div className='mt-4'>
-              <label htmlFor='password' className='form-label text-secondary'>
+              <label htmlFor='password' className={`${bodyTheme == 'dark' ? 'text-secondary' : 'text-light'} form-label`}>
                 Passwort
               </label>
               <div className='position-relative'>
@@ -162,7 +167,7 @@ const Loginpage = () => {
                 <RiLockPasswordLine style={{ right: '5px', top: '9px' }} className='text-primary fs-5 position-absolute' />
               </div>
             </div>
-            <button type='submit' className='btn btn-primary w-100 mt-4'>
+            <button type='submit' className={`btn ${bodyTheme == 'dark' ? 'btn-primary' : 'btn-secondary'} w-100 mt-4`}>
               Registrieren
             </button>
           </form>

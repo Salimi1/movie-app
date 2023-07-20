@@ -8,7 +8,7 @@ import ActorCart from '../shared/ActorCart';
 import { AiFillStar } from "react-icons/ai";
 import { GrClose } from "react-icons/gr";
 
-const MovieDetails = () => {
+const MovieDetails = ({bodyTheme}) => {
     
     const movieOrTv = useParams().movieOrTv
     const id = useParams().id
@@ -88,19 +88,19 @@ const MovieDetails = () => {
             />
           </div>
         ) : (
-            <div className='container-fluid text-white'>
+            <div className={`container-fluid ${bodyTheme == 'dark' ? 'text-light' : 'text-dark'}`}>
             <iframe ref={iframeTag} style={{zIndex: '1', display: 'none'}} className='position-absolute start-50 end-50 translate-middle-x' width="58%" height="415" src={`${YOUTUBE_URL}`} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             <div ref={closeBtn} className='position-absolute start-50' style={{zIndex: '1', top: '85%', display: 'none'}}>
-                <GrClose onClick={closeTrailerHandler} className='btn btn-danger p-0 fs-1'/>
+                <GrClose onClick={closeTrailerHandler} className={`p-0 ${bodyTheme == 'dark' ? 'bg-primary' : null} fs-1`}/>
             </div>
             <div ref={detailsDivTag} style={{zIndex:'-1'}} className='w-100 mt-4'>
                 <div className='row d-flex justify-content-between align-items-start'>
                     <div className='col-12 col-md-6 col-lg-5 d-flex justify-content-center align-items-center'>
-                        <img alt='image' className='w-75 w-md-100 rounded-2' src={ poster_path ? `${IMAGE_URL}${poster_path}` : 'https://praeger-schlauchtechnik.de/img/sample.png'}/>
+                        <img alt='image' className='w-75 shadow-lg w-md-100 rounded-2' src={ poster_path ? `${IMAGE_URL}${poster_path}` : 'https://praeger-schlauchtechnik.de/img/sample.png'}/>
                     </div>
                     <div className='col-12 col-md-6 col-lg-7 mt-5 mt-md-0'>
                         <div className='d-flex justify-content-between'>
-                            <h2 className='text-white'>{title || name || ''}</h2>
+                            <h2 className=''>{title || name || ''}</h2>
                             <div className='fs-3'>
                                 <span>{vote_average?.toFixed(1)}</span>
                                 <AiFillStar className='text-warning ms-2'/>
@@ -116,8 +116,8 @@ const MovieDetails = () => {
                             </div>
                         </div>
                         <div id='trailerCon' className='my-3'>
-                            <span className='text-warning fw-bold'>Overview</span>
-                            <button onClick={showTrailerHsandler} className='btn btn-danger ms-2'>Trailer</button>
+                            <span className={`${bodyTheme == 'dark' ? 'text-primary' : 'text-danger'} fa-bold`}>Overview</span>
+                            <button onClick={showTrailerHsandler} className={`btn ${bodyTheme == 'dark' ? 'btn-danger' : 'btn-success'} ms-2`}>Trailer</button>
                         </div>
                         <span className=''>{overview}</span>
                         <div className='d-flex mt-3'>
@@ -140,12 +140,12 @@ const MovieDetails = () => {
             </div>
 
             <div className='my-5 px-3 mx-3 mx-md-0'>
-                <h3 className='text-white pt-5 mb-4'>Hauptdarsteller</h3>
+                <h3 className='pt-5 mb-4'>Hauptdarsteller</h3>
                 <div className='row ms-sm-2 ms-md-0 d-flex flex-md-nowrap justify-content-md-evenly justify-content-center'>
                     {slicedActors.map(actor => <ActorCart data={actor} key={actor.cast_id} />)}
                 </div>
                 <div className='text-center mt-5'>
-                    <Link className='btn w-s-50 px-md-5 fs-md-2 w-md-25 btn-light' to={`/${movieOrTv}/${id}/characters`}>Mehr anzeigen</Link>
+                    <Link className={`btn ${bodyTheme == 'dark' ? 'btn-light' : 'btn-success'} w-s-50 px-md-5 fs-md-2 w-md-25 `} to={`/${movieOrTv}/${id}/characters`}>Mehr anzeigen</Link>
                 </div>
             </div>
         </div>

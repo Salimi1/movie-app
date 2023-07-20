@@ -77,7 +77,7 @@ const Home = ({ navbarValue }) => {
           />
         </div>
       ) : searchData.length === 0 ? (
-        <div style={{ backgroundColor: '#1b1c22', paddingTop: '40px' }}>
+        <div style={{paddingTop: '40px' }}>
 
           <div className='position-relative'>
             <h3 className='text-white ms-5 mt-4 row'>Serien</h3>

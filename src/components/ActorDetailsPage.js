@@ -8,7 +8,7 @@ import { ThreeDots } from 'react-loader-spinner';
 
 
 
-const ActorDetailsPage = () => {
+const ActorDetailsPage = ({bodyTheme}) => {
     const personId = useParams().id
     const IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
     const PERSON_DETAIL_URL = `https://api.themoviedb.org/3/person/${personId}?language=en-US&api_key=211669938f46a27e2998bb698a8efade`;
@@ -47,10 +47,10 @@ const ActorDetailsPage = () => {
             />
           </div>
         ) : (
-            <div className='container-fluid text-white mb-4'>
+            <div className={`container-fluid ${bodyTheme == 'dark' ? 'text-white' : 'text-dark'} mb-4`}>
             <div className='row p-4'>
                  <div className='col-12 text-center col-md-4 mt-2'>
-                    <img className='w-100' src={profile_path ? `${IMAGE_URL}/${profile_path}` : 'https://wemme-events.de/wp-content/themes/wemme/assets/images/no_image.jpg'} alt="" />
+                    <img className='w-100 shadow-lg' src={profile_path ? `${IMAGE_URL}/${profile_path}` : 'https://wemme-events.de/wp-content/themes/wemme/assets/images/no_image.jpg'} alt="" />
                  </div>
                  <div className='col-12 col-md-8 mt-5'>
                      <div className='row fw-bold'>
@@ -65,7 +65,7 @@ const ActorDetailsPage = () => {
                          <h5 className='text-primary'>Biografie</h5>
                          <p>{biography || 'Es gibt keine Infos über diese/r Schauspieler/in'}</p>
                      </div>
-                     {personCredits && <div>
+                     {personCredits.length > 0 && <div>
                         <h2 className='mt-5 text-primary'>Bekannt für</h2>
                         <div className='d-flex' style={{ overflow: 'scroll' }}>
                             {personCredits.map(item => (

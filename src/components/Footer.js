@@ -4,9 +4,9 @@ import Logo from '../assets/pictures/—Pngtree—vector popcorn icon_4002575.pn
 import { FaInstagram } from "react-icons/fa";
 import { FaTelegramPlane } from "react-icons/fa";
 
-const Footer = () => {
+const Footer = ({bodyTheme}) => {
     return (
-        <div className='container-fluid bg-dark text-light p-5'>
+        <div className={`container-fluid mt-5 ${bodyTheme == 'light' ? 'bg-secondary' : 'bg-dark'} text-light p-5`}>
             <div className='row'>
                 <div className='col-12 col-md-4'>
                     <div className='d-flex align-items-center'>
