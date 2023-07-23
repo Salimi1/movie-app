@@ -11,8 +11,8 @@ import { ThreeDots } from 'react-loader-spinner';
 const ActorDetailsPage = ({bodyTheme}) => {
     const personId = useParams().id
     const IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
-    const PERSON_DETAIL_URL = `https://api.themoviedb.org/3/person/${personId}?language=en-US&api_key=211669938f46a27e2998bb698a8efade`;
-    const PERSON_CREDITS_URL = `https://api.themoviedb.org/3/person/${personId}/movie_credits?language=en-US&api_key=211669938f46a27e2998bb698a8efade`
+    const PERSON_DETAIL_URL = `https://api.themoviedb.org/3/person/${personId}?language=en-US&api_key=e47d2fb209321705b053fb1d423a1baf`;
+    const PERSON_CREDITS_URL = `https://api.themoviedb.org/3/person/${personId}/movie_credits?language=en-US&api_key=e47d2fb209321705b053fb1d423a1baf`
 
     const [personData, setPersonData] = useState()
     const [personCredits, setPersonCredits] = useState([])
@@ -32,7 +32,7 @@ const ActorDetailsPage = ({bodyTheme}) => {
     const {profile_path, birthday, place_of_birth, name, biography} = personData || {};
     
     return (
-        <div>
+        <div className={`bg-${bodyTheme}`}>
         {loading ? (
           <div className='d-flex justify-content-center flex-wrap'>
             <ThreeDots

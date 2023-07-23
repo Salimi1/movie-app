@@ -10,7 +10,7 @@ import Cart from '../shared/Cart';
 // Spinners
 import { ThreeDots } from 'react-loader-spinner';
 
-const Home = ({ navbarValue }) => {
+const Home = ({ navbarValue, bodyTheme }) => {
   const movies = useContext(MovieContext);
   const shows = useContext(ShowContext);
   const trendFilms = useContext(TrndFilmsContext);
@@ -28,7 +28,7 @@ const Home = ({ navbarValue }) => {
     setLoading(true)
     const fetchSearchBarValue = async () => {
       try {
-        const API_KEY = '211669938f46a27e2998bb698a8efade';
+        const API_KEY = 'e47d2fb209321705b053fb1d423a1baf';
         const encodedValue = encodeURIComponent(navbarValue);
         const URL = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&query=${encodedValue}`;
         const response = await axios.get(URL);
@@ -80,27 +80,27 @@ const Home = ({ navbarValue }) => {
         <div style={{paddingTop: '40px' }}>
 
           <div className='position-relative'>
-            <h3 className='text-white ms-5 mt-4 row'>Serien</h3>
+            <h3 className={`${bodyTheme == 'dark' ? 'text-white' : 'text-dark'} ms-5 mt-4`}>Serien</h3>
             {movieShowHandler(shows, 'tv', lastItem1)}
-            <Link onClick={addHandler1} className='position-absolute btn btn-secondary mt-2' style={{right: '50px', top: '-10px'}}>Mehr anzeigen</Link>
+            <Link onClick={addHandler1} className='position-absolute btn btn-secondary mt-2 d-none d-md-block' style={{right: '50px', top: '-10px'}}>Mehr anzeigen</Link>
           </div>
           <br/>
           <div className='position-relative mt-5'>
-            <h3 className='text-white ms-5 mt-4'>Neuste Serien</h3>
+            <h3 className={`${bodyTheme == 'dark' ? 'text-white' : 'text-dark'} ms-5 mt-4`}>Neuste Serien</h3>
             {movieShowHandler(trendShows, 'tv', lastItem2)}
-            <Link onClick={addHandler2} className='position-absolute btn btn-secondary mt-2' style={{right: '50px', top: '-10px'}}>Mehr anzeigen</Link>
+            <Link onClick={addHandler2} className='position-absolute btn btn-secondary mt-2 d-none d-md-block' style={{right: '50px', top: '-10px'}}>Mehr anzeigen</Link>
           </div>
           <br/>
           <div className='position-relative mt-5'>
-            <h3 className='text-white ms-5 mt-4 row'>Filme</h3>
+            <h3 className={`${bodyTheme == 'dark' ? 'text-white' : 'text-dark'} ms-5 mt-4`}>Filme</h3>
             {movieShowHandler(movies, 'movie', lastItem3)}
-            <Link onClick={addHandler3} className='position-absolute btn btn-secondary mt-2' style={{right: '50px', top: '-10px'}}>Mehr anzeigen</Link>
+            <Link onClick={addHandler3} className='position-absolute btn btn-secondary mt-2 d-none d-md-block' style={{right: '50px', top: '-10px'}}>Mehr anzeigen</Link>
           </div>
           <br/>
           <div className='pb-5 position-relative mt-5 mb-5'>
-            <h3 className='text-white ms-5 mt-4'>Neuste Filme</h3>
+            <h3 className={`${bodyTheme == 'dark' ? 'text-white' : 'text-dark'} ms-5 mt-4`}>Neuste Filme</h3>
             {movieShowHandler(trendFilms, 'movie', lastItem4)}
-            <Link onClick={addHandler4} className='position-absolute btn btn-secondary mt-2' style={{right: '50px', top: '-10px'}}>Mehr anzeigen</Link>
+            <Link onClick={addHandler4} className='position-absolute btn btn-secondary mt-2 d-none d-md-block' style={{right: '50px', top: '-10px'}}>Mehr anzeigen</Link>
           </div>
         </div>
       ) : (

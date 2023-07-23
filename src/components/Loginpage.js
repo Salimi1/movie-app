@@ -38,7 +38,7 @@ const Loginpage = ({bodyTheme}) => {
   };
 
   const validateName = (name) => {
-    const nameRegex = /^(?=.*[A-Za-z])[A-Za-z1-9]{8,}$/;
+    const nameRegex = /^(?=.*[A-Za-z])[A-Za-z1-9 ]{8,}$/;
     return nameRegex.test(name);
   };  
 
@@ -75,6 +75,15 @@ const Loginpage = ({bodyTheme}) => {
     event.preventDefault();
   };
 
+  const getBorderClassName = (isValid) => {
+    if(bodyTheme == 'dark'){
+      return isValid ? 'border border-2 border-primary' : 'border border-2 border-danger'
+    }
+    else{
+      return isValid ? 'border border-2 border-success' : 'border border-2 border-danger'
+    }
+  }
+
   return (
     <div onLoad={() => setLoginEmailValue('')} className='container-fluid text-light'>
       {loginOrSignup === 'login' ? (
@@ -97,9 +106,7 @@ const Loginpage = ({bodyTheme}) => {
                   id='email'
                   value={loginEmailValue}
                   onChange={handleLoginEmailChange}
-                  className={`form-control rounded-1 pe-3 text-secondary ${
-                    isLoginEmailValueValid ? 'border border-2 border-primary' : 'border border-2 border-danger'
-                  }`}
+                  className={`form-control rounded-1 pe-3 text-secondary ${getBorderClassName(isLoginEmailValueValid)}`}
                 />
                 <AiOutlineMail style={{ right: '5px', top: '9px' }} className={`${bodyTheme == 'dark' ? 'text-primary' : 'text-dark'} fs-5 position-absolute`} />
               </div>
@@ -114,9 +121,7 @@ const Loginpage = ({bodyTheme}) => {
                   id='password'
                   value={loginPasswordValue}
                   onChange={handleLoginPasswordChange}
-                  className={`form-control rounded-1 pe-4 text-secondary ${
-                    isLoginPasswordValueValid ? 'border border-2 border-primary' : 'border border-2 border-danger'
-                  }`}
+                  className={`form-control rounded-1 pe-4 text-secondary ${getBorderClassName(isLoginPasswordValueValid)}`}
                 />
                 <RiLockPasswordLine style={{ right: '5px', top: '9px' }} className={`${bodyTheme == 'dark' ? 'text-primary' : 'text-dark'} fs-5 position-absolute`} />
               </div>
@@ -144,7 +149,7 @@ const Loginpage = ({bodyTheme}) => {
                 Name
               </label>
               <div className='position-relative'>
-                <input onChange={handleSignupNameChange} value={signupNameValue} type='text' id='name' className={`form-control pe-3 rounded-1 text-secondary ${signupNameValue ? 'border border-2 border-primary' : 'border border-2 border-danger'}`} />
+                <input onChange={handleSignupNameChange} value={signupNameValue} type='text' id='name' className={`form-control pe-3 rounded-1 text-secondary ${getBorderClassName(isSignupNameValueValid)}`} />
                 <AiOutlineUser style={{ right: '5px', top: '9px' }} className='text-primary fs-5 position-absolute' />
               </div>
             </div>
@@ -153,7 +158,7 @@ const Loginpage = ({bodyTheme}) => {
                 E-Mail
               </label>
               <div className='position-relative'>
-                <input type='email' id='email' className={`form-control pe-3 rounded-1 text-secondary ${isSignupEmailValueValid ? 'border border-2 border-primary' : 'border border-2 border-danger'}`} value={signupEmailValue}
+                <input type='email' id='email' className={`form-control pe-3 rounded-1 text-secondary ${getBorderClassName(isSignupEmailValueValid)}`} value={signupEmailValue}
                   onChange={handleSignupEmailChange} />
                 <AiOutlineMail style={{ right: '5px', top: '9px' }} className='text-primary fs-5 position-absolute' />
               </div>
@@ -163,7 +168,7 @@ const Loginpage = ({bodyTheme}) => {
                 Passwort
               </label>
               <div className='position-relative'>
-                <input onChange={handleSignupPasswordChange} value={signupPasswordValue} type='password' id='password' className={`form-control pe-4 rounded-1 text-secondary ${isSignupPasswordValueValid ? 'border border-2 border-primary' : 'border border-2 border-danger'}`} />
+                <input onChange={handleSignupPasswordChange} value={signupPasswordValue} type='password' id='password' className={`form-control pe-4 rounded-1 text-secondary ${getBorderClassName(isSignupPasswordValueValid)}`} />
                 <RiLockPasswordLine style={{ right: '5px', top: '9px' }} className='text-primary fs-5 position-absolute' />
               </div>
             </div>

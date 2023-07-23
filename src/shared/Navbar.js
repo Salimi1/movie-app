@@ -16,7 +16,7 @@ const Navbar = ({onChange, bodyTheme, setBodyThemeHandler}) => {
     }
     return (
         <div>
-            <nav className={`navbar navbar-${bodyTheme} navbar-expand-lg bg-${bodyTheme} sticky-top p-1 text-white shadow-sm`}>
+            <nav className={`navbar navbar-${bodyTheme} d-fixed navbar-expand-lg bg-${bodyTheme} sticky-top p-1 text-white shadow-sm`}>
                 <div className="container-fluid">
                     <Link className="navbar-brand" to="home"><img src={Logo} style={{width: '50px', height: '50px'}} className="fa-solid mb-2 fa-shop me-2" /> <strong>Web movie</strong></Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,7 +45,7 @@ const Navbar = ({onChange, bodyTheme, setBodyThemeHandler}) => {
                             <Link className="nav-link mx-2 text-uppercase active" aria-current="page" to="/home">Home</Link>
                         </li>
                         <li className="nav-item dropdown">
-                            <Link data-bs-toggle='dropdown' className="nav-link mx-2 dropdown-toggle text-uppercase" to="#" aria-expanded="false">Shows</Link>
+                            <Link data-bs-toggle='dropdown' className="nav-link mx-2 dropdown-toggle text-uppercase" to="#" aria-expanded="false">Serien</Link>
                             <ul className='dropdown-menu'>
                                 <li>
                                     <Link className='dropdown-item' to='shows/16'>Animation</Link>
@@ -80,7 +80,7 @@ const Navbar = ({onChange, bodyTheme, setBodyThemeHandler}) => {
                             </ul>
                         </li>
                         <li className="nav-item dropdown">
-                            <Link data-bs-toggle='dropdown' className="nav-link mx-2 dropdown-toggle text-uppercase" to="#" aria-expanded="false">Movies</Link>
+                            <Link data-bs-toggle='dropdown' className="nav-link mx-2 dropdown-toggle text-uppercase" to="#" aria-expanded="false">Filme</Link>
                             <ul className='dropdown-menu'>
                                 <li>
                                     <Link className='dropdown-item' to='movies/28'>Action</Link>
@@ -142,7 +142,7 @@ const Navbar = ({onChange, bodyTheme, setBodyThemeHandler}) => {
                             </ul>
                         </li>
                     </ul>
-                    <div className='form-check form-switch'>
+                    <div className='form-check ms-2 ms-s-0 mt-1 mb-2 form-switch'>
                         <input type='checkbox' role="switch" onChange={() => setBodyThemeHandler()} className='form-check-input' />
                     </div>
                     <ul className="navbar-nav ms-auto ">

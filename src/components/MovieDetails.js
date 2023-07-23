@@ -6,17 +6,17 @@ import { ThreeDots } from  'react-loader-spinner'
 import ActorCart from '../shared/ActorCart';
 //Icons
 import { AiFillStar } from "react-icons/ai";
-import { GrClose } from "react-icons/gr";
+import { VscChromeClose } from "react-icons/vsc";
 
 const MovieDetails = ({bodyTheme}) => {
     
     const movieOrTv = useParams().movieOrTv
     const id = useParams().id
-    const URL = `https://api.themoviedb.org/3/${movieOrTv}/${id}?language=en-US&api_key=211669938f46a27e2998bb698a8efade`
-    const CREDIT_URL = `https://api.themoviedb.org/3/${movieOrTv}/${id}/credits?language=en-US&api_key=211669938f46a27e2998bb698a8efade`;
-    const MOVIE_SHOW_IMAGES = `https://api.themoviedb.org/3/${movieOrTv}/${id}/images?api_key=211669938f46a27e2998bb698a8efade`
+    const URL = `https://api.themoviedb.org/3/${movieOrTv}/${id}?language=en-US&api_key=e47d2fb209321705b053fb1d423a1baf`
+    const CREDIT_URL = `https://api.themoviedb.org/3/${movieOrTv}/${id}/credits?language=en-US&api_key=e47d2fb209321705b053fb1d423a1baf`;
+    const MOVIE_SHOW_IMAGES = `https://api.themoviedb.org/3/${movieOrTv}/${id}/images?api_key=e47d2fb209321705b053fb1d423a1baf`
     const IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
-    const TRAILER_URL = `https://api.themoviedb.org/3/${movieOrTv}/${id}/videos?api_key=211669938f46a27e2998bb698a8efade`
+    const TRAILER_URL = `https://api.themoviedb.org/3/${movieOrTv}/${id}/videos?api_key=e47d2fb209321705b053fb1d423a1baf`
     
     
     const [details, setDetails] = useState([])
@@ -89,9 +89,9 @@ const MovieDetails = ({bodyTheme}) => {
           </div>
         ) : (
             <div className={`container-fluid ${bodyTheme == 'dark' ? 'text-light' : 'text-dark'}`}>
-            <iframe ref={iframeTag} style={{zIndex: '1', display: 'none'}} className='position-absolute start-50 end-50 translate-middle-x' width="58%" height="415" src={`${YOUTUBE_URL}`} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            <div ref={closeBtn} className='position-absolute start-50' style={{zIndex: '1', top: '85%', display: 'none'}}>
-                <GrClose onClick={closeTrailerHandler} className={`p-0 ${bodyTheme == 'dark' ? 'bg-primary' : null} fs-1`}/>
+            <iframe ref={iframeTag} style={{zIndex: '1', display: 'none'}} className='position-absolute position-relative start-50 end-50 translate-middle-x' width="58%" height="415" src={`${YOUTUBE_URL}`} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <div ref={closeBtn} className='position-absolute start-50' style={{zIndex: '1', top: '100%', display: 'none'}}>
+                <VscChromeClose onClick={closeTrailerHandler} className={`p-0  ${bodyTheme == 'dark' ? 'text-light' : null} fs-1 fs-bolder`}/>
             </div>
             <div ref={detailsDivTag} style={{zIndex:'-1'}} className='w-100 mt-4'>
                 <div className='row d-flex justify-content-between align-items-start'>
@@ -142,7 +142,7 @@ const MovieDetails = ({bodyTheme}) => {
             <div className='my-5 px-3 mx-3 mx-md-0'>
                 <h3 className='pt-5 mb-4'>Hauptdarsteller</h3>
                 <div className='row ms-sm-2 ms-md-0 d-flex flex-md-nowrap justify-content-md-evenly justify-content-center'>
-                    {slicedActors.map(actor => <ActorCart data={actor} key={actor.cast_id} />)}
+                    {slicedActors.length > 0 ? (slicedActors.map(actor => <ActorCart data={actor} key={actor.cast_id} />)) : (<h4 className='text-center text-danger my-5'>Es gibt keine Infos Über die Schauspielern</h4>)}
                 </div>
                 <div className='text-center mt-5'>
                     <Link className={`btn ${bodyTheme == 'dark' ? 'btn-light' : 'btn-success'} w-s-50 px-md-5 fs-md-2 w-md-25 `} to={`/${movieOrTv}/${id}/characters`}>Mehr anzeigen</Link>

@@ -13,19 +13,18 @@ const Movies = ({navbarValue}) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageNumbers, setPageNumbers] = useState([1, 2, 3, 4]);
   const [isLoading, setIsLoading] = useState(true)
-  const API_KEY = '211669938f46a27e2998bb698a8efade';
+  const API_KEY = 'e47d2fb209321705b053fb1d423a1baf';
   const btnCon = useRef();
   const value = navbarValue;
 
   useEffect(() => {
-      setIsLoading(true)
-      const fetchSearchBarValue = async () => {
+    const fetchSearchBarValue = async () => {
+        setIsLoading(true)
         try {
-          const API_KEY = '211669938f46a27e2998bb698a8efade';
           const encodedValue = encodeURIComponent(navbarValue);
           const URL = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&query=${encodedValue}`;
           const response = await axios.get(URL);
-          const searchData = response.data.results;
+          const searchData = await response.data.results;
           setSearchData(searchData);
           setIsLoading(false);
         } catch (error) {
@@ -35,10 +34,11 @@ const Movies = ({navbarValue}) => {
   
       fetchSearchBarValue();
     const fetchData = async () => {
+      setIsLoading(true)
       try {
         const URL = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_null_first_air_dates=false&language=en-US&page=${currentPage}&sort_by=popularity.desc&with_genres=${genreId}&api_key=${API_KEY}`;
         const response = await axios.get(URL);
-        setAllMovies(response.data.results);
+        setAllMovies(await response.data.results);
         setIsLoading(false)
       } catch (error) {
         console.error('Error fetching data:', error);

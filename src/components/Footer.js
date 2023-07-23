@@ -55,10 +55,10 @@ const Footer = ({bodyTheme}) => {
                     <p className='pb-3 my-3'>
                         Um uns erreichen zu konnen, kontaktieren sie uns über folgende Sozial Medien Apps
                     </p>
-                    <div className='row'>
-                        <a href='https://www.instagram.com/salimi_x.3/' className='col-4 ms-5 ms-md-0 text-white rounded-2 text-center' style={{height: '80px',lineHeight: '75px',background: 'radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285aeb 90%)'}}><FaInstagram className='' style={{width: '50px', height: '40px'}}/></a>
+                    <div className='row d-flex justify-content-evenly justify-content-md-start'>
+                        <a href='https://www.instagram.com/salimi_x.3/' className='col-4 text-white rounded-2 text-center' style={{height: '80px',lineHeight: '75px',background: 'radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285aeb 90%)'}}><FaInstagram className='' style={{width: '50px', height: '40px'}}/></a>
 
-                        <a href='5' className='ms-5 ms-md-3 text-white col-4 rounded-2 text-center' style={{height: '80px',lineHeight: '75px', background: 'linear-gradient(170deg,#0088CC,#00aaff)'}}><FaTelegramPlane className='' style={{width: '50px', height: '40px'}} /></a>
+                        <a href='5' className='ms-s-5 ms-md-3 text-white col-s-4 col-4 rounded-2 text-center' style={{height: '80px',lineHeight: '75px', background: 'linear-gradient(170deg,#0088CC,#00aaff)'}}><FaTelegramPlane className='' style={{width: '50px', height: '40px'}} /></a>
                     </div>
                 </div>
             </div>
