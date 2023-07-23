@@ -80,7 +80,7 @@ const Home = ({ navbarValue, bodyTheme }) => {
         <div style={{paddingTop: '40px' }}>
 
           <div className='position-relative'>
-            <h3 className={`${bodyTheme == 'dark' ? 'text-white' : 'text-dark'} ms-5 mt-4`}>Serien</h3>
+            <h3 className={`${bodyTheme == 'dark' ? 'text-white' : 'text-dark'} ms-5 mt-4`}>Shows</h3>
             {movieShowHandler(shows, 'tv', lastItem1)}
             <Link onClick={addHandler1} className='position-absolute btn btn-secondary mt-2 d-none d-md-block' style={{right: '50px', top: '-10px'}}>Mehr anzeigen</Link>
           </div>
