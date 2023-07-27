@@ -24,26 +24,26 @@ const Footer = ({bodyTheme}) => {
                         <tbody>
                             <tr>
                                 <td className='border-0'>
-                                    <a className='text-secondary' style={{textDecoration: 'none'}} href='#href'>Serien</a>
+                                <a role='button' onClick={() => window.scrollTo(0,0)}  className={`${bodyTheme == 'dark' ? 'text-secondary' : 'text-light'} `} style={{textDecoration: 'none'}} >Serien</a>
                                 </td>
                                 <td className='border-0'>
-                                    <a className='text-secondary' style={{textDecoration: 'none'}} href='#'>Filme</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className='border-0'>
-                                    <a className='text-secondary' href='#' style={{textDecoration: 'none'}}>Neuste</a>
-                                </td>
-                                <td className='border-0'>
-                                    <a className='text-secondary' href='#' style={{textDecoration: 'none'}}>Belibste</a>
+                                    <a role='button' onClick={() => window.scrollTo(0,0)}  className={`${bodyTheme == 'dark' ? 'text-secondary' : 'text-light'} `} style={{textDecoration: 'none'}}>Filme</a>
                                 </td>
                             </tr>
                             <tr>
                                 <td className='border-0'>
-                                    <a className='text-secondary' href='#' style={{textDecoration: 'none'}}>Im Kino</a>
+                                <a role='button' onClick={() => window.scrollTo(0,0)} className={`${bodyTheme == 'dark' ? 'text-secondary' : 'text-light'} `} style={{textDecoration: 'none'}}>Neuste</a>
                                 </td>
                                 <td className='border-0'>
-                                    <a className='text-secondary' href='#' style={{textDecoration: 'none'}}>Farzad</a>
+                                    <a role='button' onClick={() => window.scrollTo(0,0)}  className={`${bodyTheme == 'dark' ? 'text-secondary' : 'text-light'}`} style={{textDecoration: 'none'}}>Belibste</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className='border-0'>
+                                <a role='button' onClick={() => window.scrollTo(0,0)}  className={`${bodyTheme == 'dark' ? 'text-secondary' : 'text-light'} `} style={{textDecoration: 'none'}}>Im Kino</a>
+                                </td>
+                                <td className='border-0'>
+                                <a role='button' onClick={() => window.scrollTo(0,0)}  className={`${bodyTheme == 'dark' ? 'text-secondary' : 'text-light'} `} style={{textDecoration: 'none'}}>Winter</a>
                                 </td>
                             </tr>
                         </tbody>

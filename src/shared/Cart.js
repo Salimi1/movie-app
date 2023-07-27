@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { titleShorter } from '../services/api';
 //Icons
 const Cart = ({itemData, movieOrTv, bodyTheme}) => {
-    const {title, id, poster_path, vote_average, release_date, name, first_air_date} = itemData
+    const {title, id, poster_path, vote_average, release_date, name, first_air_date, profile_path} = itemData
     const IMAGE_URL = 'https://image.tmdb.org/t/p/w500'
     return (
         <div>

@@ -2,15 +2,18 @@ import axios, { all } from 'axios'
 import { Link } from 'react-router-dom';
 //Components
 import Cart from '../shared/Cart';
+import ActorCart from '../shared/ActorCart';
 import { useState } from 'react';
 
-const Movie_API_URL = 'https://api.themoviedb.org/3/discover/movie?api_key=e47d2fb209321705b053fb1d423a1baf&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate';
+const Movie_API_URL = 'https://api.themoviedb.org/3/discover/movie?api_key=afd56baf731d5eedf4a0a15f63e354b1&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate';
 
-const SHOW_API_URL = 'https://api.themoviedb.org/3/discover/tv?api_key=e47d2fb209321705b053fb1d423a1baf&language=en-US&sort_by=popularity.desc&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0';
+const SHOW_API_URL = 'https://api.themoviedb.org/3/discover/tv?api_key=afd56baf731d5eedf4a0a15f63e354b1&language=en-US&sort_by=popularity.desc&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0';
 
-const TREND_FILMS_URL = 'https://api.themoviedb.org/3/trending/movie/day?api_key=e47d2fb209321705b053fb1d423a1baf';
+const TREND_FILMS_URL = 'https://api.themoviedb.org/3/trending/movie/day?api_key=afd56baf731d5eedf4a0a15f63e354b1';
 
-const TFREND_SHOWS_URL = 'https://api.themoviedb.org/3/trending/tv/day?api_key=e47d2fb209321705b053fb1d423a1baf'
+const TREND_SHOWS_URL = 'https://api.themoviedb.org/3/trending/tv/day?api_key=afd56baf731d5eedf4a0a15f63e354b1'
+
+const TREND_PEOPLE_URL = 'https://api.themoviedb.org/3/trending/person/day?api_key=afd56baf731d5eedf4a0a15f63e354b1'
 
 const getFilms = async () => {
         const response = await axios.get(Movie_API_URL);
@@ -30,9 +33,16 @@ const getShows = async () => {
 }
 
 const getTrendShows = async () => {
-    const response = await axios.get(TFREND_SHOWS_URL)
+    const response = await axios.get(TREND_SHOWS_URL)
     const trendShows = response.data.results
     return trendShows
+}
+
+const getTrendPersonHandler = async () => {
+    const response = await axios.get(TREND_PEOPLE_URL)
+    const trendPeople = await response.data.results
+    const trendPeopleResult = trendPeople
+    return trendPeopleResult
 }
 
 const titleShorter = (title) => {
@@ -47,19 +57,21 @@ const movieShowHandler = (Info, movieTv, lastItemIndex) => {
     const dataBox = Info.slice(0, lastItem);
     return (
         <div className='container-fluid'>
-            <div className='d-flex row justify-content-center justify-md-content-between justify-content-sm-center flex-wrap'>
-                {
-                    dataBox.map(item => 
+            <div className='d-flex justify-content-center justify-md-content-between justify-content-sm-center flex-wrap'>
+                {movieTv === 'person' ? dataBox.map(item => 
+                        <ActorCart
+                        key={item.id}
+                        data={item}
+                    />) : dataBox.map(item => 
                         <Cart
                         key={item.id}
                         itemData={item}
                         movieOrTv={movieTv}
-                    />)
-                }
+                    />)}
             </div>
         </div>  
     )
 }
 
 
-export {getFilms, getShows, titleShorter, movieShowHandler, getTrendFilms, getTrendShows}
+export {getFilms, getShows, titleShorter, movieShowHandler, getTrendFilms, getTrendShows, getTrendPersonHandler}

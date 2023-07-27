@@ -33,12 +33,12 @@ const Navbar = ({onChange, bodyTheme, setBodyThemeHandler}) => {
                     </div>
                     <ul className="navbar-nav ms-auto ">
                         <div className="mx-auto my-3 d-lg-none d-sm-block d-xs-block">
-                            <div className="input-group">
+                            <div className="input-group me-4">
                                 <span className="border-primary input-group-text bg-primary text-white"><i className="fa-solid fa-magnifying-glass"></i></span>
                                 <input value={inputValue} onChange={handleInputChange} placeholder='Was suchst du?' type="text" className="form-control position-relative border-primary" style={{color: '#7a7a7a'}} />
-                                <AiOutlineDelete onClick={() => setInputValue('') & onChange('')} role='button' style={{top: '10px', left: '5px'}} className='position-absolute text-white' />
+                                <AiOutlineDelete onClick={(e) => setInputValue('') & onChange('') & e.preventDefault()} role='button' style={{top: '10px', left: '5px'}} className='position-absolute text-white' />
 
-                                <button className="btn btn-primary text-white">Search</button>
+                                <button  className="btn btn-primary text-white">Search</button>
                             </div>
                         </div>
                         <li className="nav-item">

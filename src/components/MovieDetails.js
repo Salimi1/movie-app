@@ -12,11 +12,11 @@ const MovieDetails = ({bodyTheme}) => {
     
     const movieOrTv = useParams().movieOrTv
     const id = useParams().id
-    const URL = `https://api.themoviedb.org/3/${movieOrTv}/${id}?language=en-US&api_key=e47d2fb209321705b053fb1d423a1baf`
-    const CREDIT_URL = `https://api.themoviedb.org/3/${movieOrTv}/${id}/credits?language=en-US&api_key=e47d2fb209321705b053fb1d423a1baf`;
-    const MOVIE_SHOW_IMAGES = `https://api.themoviedb.org/3/${movieOrTv}/${id}/images?api_key=e47d2fb209321705b053fb1d423a1baf`
+    const URL = `https://api.themoviedb.org/3/${movieOrTv}/${id}?language=en-US&api_key=afd56baf731d5eedf4a0a15f63e354b1`
+    const CREDIT_URL = `https://api.themoviedb.org/3/${movieOrTv}/${id}/credits?language=en-US&api_key=afd56baf731d5eedf4a0a15f63e354b1`;
+    const MOVIE_SHOW_IMAGES = `https://api.themoviedb.org/3/${movieOrTv}/${id}/images?api_key=afd56baf731d5eedf4a0a15f63e354b1`
     const IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
-    const TRAILER_URL = `https://api.themoviedb.org/3/${movieOrTv}/${id}/videos?api_key=e47d2fb209321705b053fb1d423a1baf`
+    const TRAILER_URL = `https://api.themoviedb.org/3/${movieOrTv}/${id}/videos?api_key=afd56baf731d5eedf4a0a15f63e354b1`
     
     
     const [details, setDetails] = useState([])
@@ -47,6 +47,7 @@ const MovieDetails = ({bodyTheme}) => {
     }
 
     useEffect(() => {
+        window.scrollTo(0,0)
         const fetchDetails = async () => {
             const response = await axios.get(URL)
             const creditResponse = await axios.get(CREDIT_URL)
@@ -89,10 +90,10 @@ const MovieDetails = ({bodyTheme}) => {
           </div>
         ) : (
             <div className={`container-fluid ${bodyTheme == 'dark' ? 'text-light' : 'text-dark'}`}>
-            <iframe ref={iframeTag} style={{zIndex: '1', display: 'none'}} className='position-absolute position-relative start-50 end-50 translate-middle-x' width="58%" height="415" src={`${YOUTUBE_URL}`} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            <div ref={closeBtn} className='position-absolute start-50' style={{zIndex: '1', top: '100%', display: 'none'}}>
+            <div ref={closeBtn} className='ms-4 ms-md-5 ps-md-5' style={{zIndex: '1', display: 'none'}}>
                 <VscChromeClose onClick={closeTrailerHandler} className={`p-0  ${bodyTheme == 'dark' ? 'text-light' : null} fs-1 fs-bolder`}/>
             </div>
+            <iframe ref={iframeTag} style={{zIndex: '1', display: 'none'}} className='position-absolute position-relative start-50 end-50 translate-middle-x' width="58%" height="415" src={`${YOUTUBE_URL}`} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             <div ref={detailsDivTag} style={{zIndex:'-1'}} className='w-100 mt-4'>
                 <div className='row d-flex justify-content-between align-items-start'>
                     <div className='col-12 col-md-6 col-lg-5 d-flex justify-content-center align-items-center'>
@@ -116,8 +117,8 @@ const MovieDetails = ({bodyTheme}) => {
                             </div>
                         </div>
                         <div id='trailerCon' className='my-3'>
-                            <span className={`${bodyTheme == 'dark' ? 'text-primary' : 'text-danger'} fa-bold`}>Overview</span>
-                            <button onClick={showTrailerHsandler} className={`btn ${bodyTheme == 'dark' ? 'btn-danger' : 'btn-success'} ms-2`}>Trailer</button>
+                            <span className={`${bodyTheme == 'dark' ? 'text-primary' : 'text-secondary'} fa-bold`}>Overview</span>
+                            <button onClick={showTrailerHsandler} className={`btn ${bodyTheme == 'dark' ? 'btn-secondary' : 'btn-primary'} ms-2`}>Trailer</button>
                         </div>
                         <span className=''>{overview}</span>
                         <div className='d-flex mt-3'>
@@ -145,7 +146,7 @@ const MovieDetails = ({bodyTheme}) => {
                     {slicedActors.length > 0 ? (slicedActors.map(actor => <ActorCart data={actor} key={actor.cast_id} />)) : (<h4 className='text-center text-danger my-5'>Es gibt keine Infos Über die Schauspielern</h4>)}
                 </div>
                 <div className='text-center mt-5'>
-                    <Link className={`btn ${bodyTheme == 'dark' ? 'btn-light' : 'btn-success'} w-s-50 px-md-5 fs-md-2 w-md-25 `} to={`/${movieOrTv}/${id}/characters`}>Mehr anzeigen</Link>
+                    <Link className={`btn ${bodyTheme == 'dark' ? 'btn-secondary' : 'btn-primary'} w-s-50 px-md-5 fs-md-2 w-md-25 mt-3 `} to={`/${movieOrTv}/${id}/characters`}>Mehr anzeigen</Link>
                 </div>
             </div>
         </div>

@@ -11,14 +11,15 @@ import { ThreeDots } from 'react-loader-spinner';
 const ActorDetailsPage = ({bodyTheme}) => {
     const personId = useParams().id
     const IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
-    const PERSON_DETAIL_URL = `https://api.themoviedb.org/3/person/${personId}?language=en-US&api_key=e47d2fb209321705b053fb1d423a1baf`;
-    const PERSON_CREDITS_URL = `https://api.themoviedb.org/3/person/${personId}/movie_credits?language=en-US&api_key=e47d2fb209321705b053fb1d423a1baf`
+    const PERSON_DETAIL_URL = `https://api.themoviedb.org/3/person/${personId}?language=en-US&api_key=afd56baf731d5eedf4a0a15f63e354b1`;
+    const PERSON_CREDITS_URL = `https://api.themoviedb.org/3/person/${personId}/movie_credits?language=en-US&api_key=afd56baf731d5eedf4a0a15f63e354b1`
 
     const [personData, setPersonData] = useState()
     const [personCredits, setPersonCredits] = useState([])
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
+        window.scrollTo(0,0)
         const fetchPersonDetails = async () =>{
             const personDetailsResponse = await axios.get(PERSON_DETAIL_URL)
             setPersonData(personDetailsResponse.data)
