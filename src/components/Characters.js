@@ -1,9 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-//Context
-import { MovieContext } from '../context/MovieContextProvider';
-import { ShowContext } from '../context/ShowContextProvider';
+
 //shared
 import ActorCart from '../shared/ActorCart';
 
@@ -11,8 +9,6 @@ import ActorCart from '../shared/ActorCart';
 import { ThreeDots } from 'react-loader-spinner';
 
 const Characters = ({bodyTheme}) => {
-    const movies = useContext(MovieContext)
-    const shows = useContext(ShowContext)
     const [isLoading, setIsLoading] = useState(true)
     const {type, id}= useParams()
     const CREDIT_URL = `https://api.themoviedb.org/3/${type}/${id}/credits?language=en-US&api_key=afd56baf731d5eedf4a0a15f63e354b1`;
@@ -39,7 +35,7 @@ const Characters = ({bodyTheme}) => {
               visible={true}
             />
           </div> : <div>
-            <h2 className={`${bodyTheme == 'dark' ? 'text-white' : 'text-dark'} my-4 ps-5 ms-5`}>Alle Schauspieler</h2>
+            <h2 className={`${bodyTheme === 'dark' ? 'text-white' : 'text-dark'} my-4 ps-5 ms-5`}>Alle Schauspieler</h2>
             <div className='row d-flex flex-wrap mx-0 justify-content-evenly justify-content-md-center'>
                 {actors.length > 0 ? (actors?.map(actor => <ActorCart data={actor} key={actor.cast_id} />)) : <h4 className='text-center text-danger my-5'>Es gibt keine Infos Über die Schauspielern</h4>}
             </div>

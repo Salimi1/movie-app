@@ -89,9 +89,9 @@ const MovieDetails = ({bodyTheme}) => {
             />
           </div>
         ) : (
-            <div className={`container-fluid ${bodyTheme == 'dark' ? 'text-light' : 'text-dark'}`}>
+            <div className={`container-fluid ${bodyTheme === 'dark' ? 'text-light' : 'text-dark'}`}>
             <div ref={closeBtn} className='ms-4 ms-md-5 ps-md-5' style={{zIndex: '1', display: 'none'}}>
-                <VscChromeClose onClick={closeTrailerHandler} className={`p-0  ${bodyTheme == 'dark' ? 'text-light' : null} fs-1 fs-bolder`}/>
+                <VscChromeClose onClick={closeTrailerHandler} className={`p-0  ${bodyTheme === 'dark' ? 'text-light' : null} fs-1 fs-bolder`}/>
             </div>
             <iframe ref={iframeTag} style={{zIndex: '1', display: 'none'}} className='position-absolute position-relative start-50 end-50 translate-middle-x' width="58%" height="415" src={`${YOUTUBE_URL}`} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             <div ref={detailsDivTag} style={{zIndex:'-1'}} className='w-100 mt-4'>
@@ -117,8 +117,8 @@ const MovieDetails = ({bodyTheme}) => {
                             </div>
                         </div>
                         <div id='trailerCon' className='my-3'>
-                            <span className={`${bodyTheme == 'dark' ? 'text-primary' : 'text-secondary'} fa-bold`}>Overview</span>
-                            <button onClick={showTrailerHsandler} className={`btn ${bodyTheme == 'dark' ? 'btn-secondary' : 'btn-primary'} ms-2`}>Trailer</button>
+                            <span className={`${bodyTheme === 'dark' ? 'text-primary' : 'text-secondary'} fa-bold`}>Overview</span>
+                            <button onClick={showTrailerHsandler} className={`btn ${bodyTheme === 'dark' ? 'btn-secondary' : 'btn-primary'} ms-2`}>Trailer</button>
                         </div>
                         <span className=''>{overview}</span>
                         <div className='d-flex mt-3'>
@@ -134,7 +134,7 @@ const MovieDetails = ({bodyTheme}) => {
                             <p className='ms-2'>{ original_language}</p>
                         </div>
                         <div style={{}} className='row'>
-                            {slicedImages?.map(item => <img key={item} className='col-6 mt-2' style={{height: '190px'}} src={`${IMAGE_URL}${item}`} />)}
+                            {slicedImages?.map(item => <img alt='bild' key={item} className='col-6 mt-2' style={{height: '190px'}} src={`${IMAGE_URL}${item}`} />)}
                         </div>
                     </div>
                 </div>
@@ -146,7 +146,7 @@ const MovieDetails = ({bodyTheme}) => {
                     {slicedActors.length > 0 ? (slicedActors.map(actor => <ActorCart data={actor} key={actor.cast_id} />)) : (<h4 className='text-center text-danger my-5'>Es gibt keine Infos Über die Schauspielern</h4>)}
                 </div>
                 <div className='text-center mt-5'>
-                    <Link className={`btn ${bodyTheme == 'dark' ? 'btn-secondary' : 'btn-primary'} w-s-50 px-md-5 fs-md-2 w-md-25 mt-3 `} to={`/${movieOrTv}/${id}/characters`}>Mehr anzeigen</Link>
+                    <Link className={`btn ${bodyTheme === 'dark' ? 'btn-secondary' : 'btn-primary'} w-s-50 px-md-5 fs-md-2 w-md-25 mt-3 `} to={`/${movieOrTv}/${id}/characters`}>Mehr anzeigen</Link>
                 </div>
             </div>
         </div>

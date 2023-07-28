@@ -1,10 +1,8 @@
-import React, { useEffect, useRef, useState, createContext, useContext } from 'react';
+import React, { useState, createContext } from 'react';
 import Logo from '../assets/pictures/—Pngtree—vector popcorn icon_4002575.png'
 import { Link } from 'react-router-dom'
 //Icons
 import { AiOutlineDelete } from "react-icons/ai";
-//Context
-import { ThemeContext } from '../App';
 
 export const searchBoxValueContext = createContext()
 const Navbar = ({onChange, bodyTheme, setBodyThemeHandler}) => {
@@ -18,7 +16,7 @@ const Navbar = ({onChange, bodyTheme, setBodyThemeHandler}) => {
         <div>
             <nav className={`navbar navbar-${bodyTheme} d-fixed navbar-expand-lg bg-${bodyTheme} sticky-top p-1 text-white shadow-sm`}>
                 <div className="container-fluid">
-                    <Link className="navbar-brand" to="home"><img src={Logo} style={{width: '50px', height: '50px'}} className="fa-solid mb-2 fa-shop me-2" /> <strong>Web movie</strong></Link>
+                    <Link className="navbar-brand" to="home"><img alt='NavbarLogo' src={Logo} style={{width: '50px', height: '50px'}} className="fa-solid mb-2 fa-shop me-2" /> <strong>Web movie</strong></Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                     </button>
@@ -147,7 +145,7 @@ const Navbar = ({onChange, bodyTheme, setBodyThemeHandler}) => {
                     </div>
                     <ul className="navbar-nav ms-auto ">
                         <li className="nav-item dropdown">
-                            <Link className={`nav-link mx-2 text-${bodyTheme} text-uppercase btn ${bodyTheme == 'dark' ? 'btn-light' : 'btn-secondary'}`}  to="account/login"><i className="fa-solid fa-cart-shopping me-1"></i> Anmelden</Link>
+                            <Link className={`nav-link mx-2 text-${bodyTheme} text-uppercase btn ${bodyTheme === 'dark' ? 'btn-light' : 'btn-secondary'}`}  to="account/login"><i className="fa-solid fa-cart-shopping me-1"></i> Anmelden</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link mx-2 text-light text-uppercase btn btn-primary mt-2 mt-lg-0" to="account/registrieren"><i className="fa-solid fa-circle-user me-1"></i>Registrieren</Link>

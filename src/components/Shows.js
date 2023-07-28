@@ -118,7 +118,7 @@ const Shows = ({ navbarValue, bodyTheme }) => {
             </h3>}
           <div className='d-flex justify-content-center flex-wrap'>
             {searchData.length > 0 ? (
-              searchData.map(item => item.media_type == 'person' ? <ActorCart key={item.id} data={item} /> : <Cart key={item.id} itemData={item} movieOrTv={item.media_type} />)
+              searchData.map(item => item.media_type === 'person' ? <ActorCart key={item.id} data={item} /> : <Cart key={item.id} itemData={item} movieOrTv={item.media_type} />)
             ) : allShows.length > 0 ? (
               allShows.map((item) => <Cart itemData={item} movieOrTv='tv' key={item.id} />)
             ) : (

@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 import { titleShorter } from '../services/api';
 //Icons
 const Cart = ({itemData, movieOrTv, bodyTheme}) => {
-    const {title, id, poster_path, vote_average, release_date, name, first_air_date, profile_path} = itemData
+    const {title, id, poster_path, vote_average, release_date, name, first_air_date} = itemData
     const IMAGE_URL = 'https://image.tmdb.org/t/p/w500'
     return (
         <div>
             <div style={{width: '200px'}} className={`card border border-1 ${bodyTheme = 'dark' ? ('border-light') : ('border-primary')} text-white m-3`}>
-                <img src={poster_path ? `${IMAGE_URL}${poster_path}` : 'https://praeger-schlauchtechnik.de/img/sample.png'} className='card-img h-100' style={{filter: 'brightness(0.6)'}} />
+                <img alt='MovieImage' src={poster_path ? `${IMAGE_URL}${poster_path}` : 'https://praeger-schlauchtechnik.de/img/sample.png'} className='card-img h-100' style={{filter: 'brightness(0.6)'}} />
                 <div className='card-img-overlay d-flex flex-column justify-content-end'>
                     <div className='row'>
                         <h6 className='card-title py-1 col-12 rounded-4 bg-warning col-12'>{titleShorter(name || title)}...</h6>

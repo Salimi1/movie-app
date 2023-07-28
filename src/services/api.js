@@ -1,9 +1,7 @@
-import axios, { all } from 'axios'
-import { Link } from 'react-router-dom';
+import axios from 'axios'
 //Components
 import Cart from '../shared/Cart';
 import ActorCart from '../shared/ActorCart';
-import { useState } from 'react';
 
 const Movie_API_URL = 'https://api.themoviedb.org/3/discover/movie?api_key=afd56baf731d5eedf4a0a15f63e354b1&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate';
 

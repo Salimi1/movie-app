@@ -11,7 +11,7 @@ const Footer = ({bodyTheme}) => {
                 <div className='col-12 col-md-4'>
                     <div className='d-flex align-items-center'>
                         <h4>Web Movie</h4>
-                        <img src={Logo} style={{width: '80px'}}/>
+                        <img alt='FooterLogo' src={Logo} style={{width: '80px'}}/>
                     </div>
                     <p className='pe-4 mt-4 text-center text-sm-start'>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
                 </div>
@@ -24,26 +24,26 @@ const Footer = ({bodyTheme}) => {
                         <tbody>
                             <tr>
                                 <td className='border-0'>
-                                <a role='button' onClick={() => window.scrollTo(0,0)}  className={`${bodyTheme == 'dark' ? 'text-secondary' : 'text-light'} `} style={{textDecoration: 'none'}} >Serien</a>
+                                <a role='button' onClick={() => window.scrollTo(0,0)}  className={`${bodyTheme === 'dark' ? 'text-secondary' : 'text-light'} `} style={{textDecoration: 'none'}} >Serien</a>
                                 </td>
                                 <td className='border-0'>
-                                    <a role='button' onClick={() => window.scrollTo(0,0)}  className={`${bodyTheme == 'dark' ? 'text-secondary' : 'text-light'} `} style={{textDecoration: 'none'}}>Filme</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className='border-0'>
-                                <a role='button' onClick={() => window.scrollTo(0,0)} className={`${bodyTheme == 'dark' ? 'text-secondary' : 'text-light'} `} style={{textDecoration: 'none'}}>Neuste</a>
-                                </td>
-                                <td className='border-0'>
-                                    <a role='button' onClick={() => window.scrollTo(0,0)}  className={`${bodyTheme == 'dark' ? 'text-secondary' : 'text-light'}`} style={{textDecoration: 'none'}}>Belibste</a>
+                                    <a role='button' onClick={() => window.scrollTo(0,0)}  className={`${bodyTheme === 'dark' ? 'text-secondary' : 'text-light'} `} style={{textDecoration: 'none'}}>Filme</a>
                                 </td>
                             </tr>
                             <tr>
                                 <td className='border-0'>
-                                <a role='button' onClick={() => window.scrollTo(0,0)}  className={`${bodyTheme == 'dark' ? 'text-secondary' : 'text-light'} `} style={{textDecoration: 'none'}}>Im Kino</a>
+                                <a role='button' onClick={() => window.scrollTo(0,0)} className={`${bodyTheme === 'dark' ? 'text-secondary' : 'text-light'} `} style={{textDecoration: 'none'}}>Neuste</a>
                                 </td>
                                 <td className='border-0'>
-                                <a role='button' onClick={() => window.scrollTo(0,0)}  className={`${bodyTheme == 'dark' ? 'text-secondary' : 'text-light'} `} style={{textDecoration: 'none'}}>Winter</a>
+                                    <a role='button' onClick={() => window.scrollTo(0,0)}  className={`${bodyTheme === 'dark' ? 'text-secondary' : 'text-light'}`} style={{textDecoration: 'none'}}>Belibste</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className='border-0'>
+                                <a role='button' onClick={() => window.scrollTo(0,0)}  className={`${bodyTheme === 'dark' ? 'text-secondary' : 'text-light'} `} style={{textDecoration: 'none'}}>Im Kino</a>
+                                </td>
+                                <td className='border-0'>
+                                <a role='button' onClick={() => window.scrollTo(0,0)}  className={`${bodyTheme === 'dark' ? 'text-secondary' : 'text-light'} `} style={{textDecoration: 'none'}}>Winter</a>
                                 </td>
                             </tr>
                         </tbody>

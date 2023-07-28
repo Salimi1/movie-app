@@ -31,7 +31,7 @@ const genres = [
 
 const Movies = ({ navbarValue, bodyTheme }) => {
   const genreId = useParams().genreId;
-  const genreName = genres.find(genre => genre.id == genreId)?.name;
+  const genreName = genres.find(genre => genre.id === genreId)?.name;
   const [allMovies, setAllMovies] = useState([]);
   const [searchData, setSearchData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -149,7 +149,7 @@ const Movies = ({ navbarValue, bodyTheme }) => {
         <div className='container-fluid'>
           <div className='d-flex justify-content-center flex-row flex-wrap'>
             {searchData.map((item) => (
-              item.media_type == 'person' ? <ActorCart key={item.id} data={item} /> : <Cart key={item.id} itemData={item} movieOrTv={item.media_type} />
+              item.media_type === 'person' ? <ActorCart key={item.id} data={item} /> : <Cart key={item.id} itemData={item} movieOrTv={item.media_type} />
             ))}
           </div>
         </div>

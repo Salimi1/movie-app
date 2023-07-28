@@ -90,30 +90,30 @@ const Home = ({ navbarValue, bodyTheme }) => {
         <div style={{paddingTop: '40px' }}>
 
           <div className='position-relative'>
-            <h3 className={`${bodyTheme == 'dark' ? 'text-white' : 'text-dark'} ms-5 mt-4`}>Serien</h3>
+            <h3 className={`${bodyTheme === 'dark' ? 'text-white' : 'text-dark'} ms-5 mt-4`}>Serien</h3>
             {movieShowHandler(shows, 'tv', lastItem1)}
             <Link onClick={addHandler1} className='position-absolute btn btn-secondary mt-2 d-none d-md-block' style={{right: '50px', top: '-10px'}}>Mehr anzeigen</Link>
           </div>
           <br/>
           <div className='position-relative mt-5'>
-            <h3 className={`${bodyTheme == 'dark' ? 'text-white' : 'text-dark'} ms-5 mt-4`}>Neuste Serien</h3>
+            <h3 className={`${bodyTheme === 'dark' ? 'text-white' : 'text-dark'} ms-5 mt-4`}>Neuste Serien</h3>
             {movieShowHandler(trendShows, 'tv', lastItem2)}
             <Link onClick={addHandler2} className='position-absolute btn btn-secondary mt-2 d-none d-md-block' style={{right: '50px', top: '-10px'}}>Mehr anzeigen</Link>
           </div>
           <div className='position-relative mt-5'>
-            <h3 className={`${bodyTheme == 'dark' ? 'text-white' : 'text-dark'} ms-5 mt-4`}>Belibste Schauspielern</h3>
+            <h3 className={`${bodyTheme === 'dark' ? 'text-white' : 'text-dark'} ms-5 mt-4`}>Belibste Schauspielern</h3>
             {movieShowHandler(trendPersons, 'person', lastItem5)}
             <Link onClick={addHandler5} className='position-absolute btn btn-secondary mt-2 d-none d-md-block' style={{right: '50px', top: '-10px'}}>Mehr anzeigen</Link>
           </div>
           <br/>
           <div className='position-relative mt-5'>
-            <h3 className={`${bodyTheme == 'dark' ? 'text-white' : 'text-dark'} ms-5 mt-4`}>Filme</h3>
+            <h3 className={`${bodyTheme === 'dark' ? 'text-white' : 'text-dark'} ms-5 mt-4`}>Filme</h3>
             {movieShowHandler(movies, 'movie', lastItem3)}
             <Link onClick={addHandler3} className='position-absolute btn btn-secondary mt-2 d-none d-md-block' style={{right: '50px', top: '-10px'}}>Mehr anzeigen</Link>
           </div>
           <br/>
           <div className='pb-5 position-relative mt-5 mb-5'>
-            <h3 className={`${bodyTheme == 'dark' ? 'text-white' : 'text-dark'} ms-5 mt-4`}>Neuste Filme</h3>
+            <h3 className={`${bodyTheme === 'dark' ? 'text-white' : 'text-dark'} ms-5 mt-4`}>Neuste Filme</h3>
             {movieShowHandler(trendFilms, 'movie', lastItem4)}
             <Link onClick={addHandler4} className='position-absolute btn btn-secondary mt-2 d-none d-md-block' style={{right: '50px', top: '-10px'}}>Mehr anzeigen</Link>
           </div>
@@ -121,7 +121,7 @@ const Home = ({ navbarValue, bodyTheme }) => {
       ) : (
         <div className='container-fluid'>
           <div className='d-flex justify-content-center flex-row flex-wrap'>
-            {searchData.map(item => item.media_type == 'person' ?               <ActorCart key={item.id} data={item} /> : <Cart key={item.id} itemData={item} movieOrTv={item.media_type} />
+            {searchData.map(item => item.media_type === 'person' ? <ActorCart key={item.id} data={item} /> : <Cart key={item.id} itemData={item} movieOrTv={item.media_type} />
 
             )}
           </div>

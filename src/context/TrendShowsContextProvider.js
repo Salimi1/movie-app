@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 //Components
-import { getTrendFilms, getTrendShows } from '../services/api';
+import { getTrendShows } from '../services/api';
 
 export const TrendShowsContext = createContext()
 const TrendShowsContextProvider = ({children}) => {

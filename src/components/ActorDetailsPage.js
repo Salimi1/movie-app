@@ -48,7 +48,7 @@ const ActorDetailsPage = ({bodyTheme}) => {
             />
           </div>
         ) : (
-            <div className={`container-fluid ${bodyTheme == 'dark' ? 'text-white' : 'text-dark'} mb-4`}>
+            <div className={`container-fluid ${bodyTheme === 'dark' ? 'text-white' : 'text-dark'} mb-4`}>
             <div className='row p-4'>
                  <div className='col-12 text-center col-md-4 mt-2'>
                     <img className='w-100 shadow-lg' src={profile_path ? `${IMAGE_URL}/${profile_path}` : 'https://wemme-events.de/wp-content/themes/wemme/assets/images/no_image.jpg'} alt="" />
