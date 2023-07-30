@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '../assets/pictures/—Pngtree—vector popcorn icon_4002575.png'
+import Logo from '../assets/pictures/logo.png'
 //Logos
 import { FaInstagram } from "react-icons/fa";
 import { FaTelegramPlane } from "react-icons/fa";

@@ -11,6 +11,7 @@ import ActorCart from '../shared/ActorCart';
 // Spinners
 import { ThreeDots } from 'react-loader-spinner';
 const Home = ({ navbarValue, bodyTheme }) => {
+  const [navValue, setNavbarValue] = useState()
   const movies = useContext(MovieContext);
   const shows = useContext(ShowContext);
   const trendFilms = useContext(TrndFilmsContext);
@@ -31,11 +32,12 @@ const Home = ({ navbarValue, bodyTheme }) => {
     setLoading(true)
     const fetchSearchBarValue = async () => {
       try {
+        setNavbarValue(navbarValue)
         const persons = await getTrendPersonHandler();
         const trendPersons = await persons
         settrendPersons(trendPersons)
         const API_KEY = 'afd56baf731d5eedf4a0a15f63e354b1';
-        const encodedValue = encodeURIComponent(navbarValue);
+        const encodedValue = encodeURIComponent(navValue);
         const URL = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&query=${encodedValue}`;
         const response = await axios.get(URL);
         const searchData = response.data.results;
@@ -48,7 +50,7 @@ const Home = ({ navbarValue, bodyTheme }) => {
     };
 
     fetchSearchBarValue();
-  }, [navbarValue]);
+  }, [navValue]);
 
   const addHandler1 = (e) => {
     e.preventDefault()

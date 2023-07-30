@@ -1,5 +1,5 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useState } from 'react';
 //Components
 import Footer from './components/Footer';
 import Navbar from '../src/shared/Navbar'
@@ -26,7 +26,7 @@ function App() {
     setBodyTheme((preve) => preve === 'dark' ? 'light' : 'dark')
   }
 
-  const handleNavbarChange = (newValue) => {
+  const handleNavbarChange = ({newValue}) => {
     setNavbarValue(newValue)
   };
   return (

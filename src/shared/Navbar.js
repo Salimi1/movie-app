@@ -1,5 +1,5 @@
 import React, { useState, createContext } from 'react';
-import Logo from '../assets/pictures/—Pngtree—vector popcorn icon_4002575.png'
+import Logo from '../assets/pictures/logo.png'
 import { Link } from 'react-router-dom'
 //Icons
 import { AiOutlineDelete } from "react-icons/ai";
@@ -159,5 +159,3 @@ const Navbar = ({onChange, bodyTheme, setBodyThemeHandler}) => {
 }
 
 export default Navbar;
-
-// onBlur={() => setInputValue('') & onChange('')}
