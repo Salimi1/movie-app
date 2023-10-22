@@ -1,5 +1,5 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
-import React, { createContext, useState } from 'react';
+import React, { useState } from 'react';
 //Components
 import Footer from './components/Footer';
 import Navbar from '../src/shared/Navbar'
@@ -15,8 +15,6 @@ import MovieContextProvider from './context/MovieContextProvider';
 import ShowContextProvider from './context/ShowContextProvider';
 import TrndFilmsContextProvider from './context/TrendFilmsContextProvider';
 import TrendShowsContextProvider from './context/TrendShowsContextProvider';
-
-export const ThemeContext = createContext()
 
 function App() {
   const [navbarValue, setNavbarValue] = useState('')
